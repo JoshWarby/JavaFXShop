@@ -10,16 +10,16 @@ import javafx.stage.Stage;
 import view.ShoppingRootPane;
 
 public class ApplicationLoader extends Application{
-	
+
 	private ShoppingRootPane view;
-	
-	
+
+
 	@Override
 	public void init() {
 		//create model and view and pass their references to the controller
 		//DiceGameEngine model = new DiceGameEngine();
 		view = new ShoppingRootPane();
-		//new DiceGameController(view, model);	
+		//new DiceGameController(view, model);
 	}
 
 	@Override
@@ -30,13 +30,13 @@ public class ApplicationLoader extends Application{
 		stage.setScene(new Scene(view));
 		stage.show();
 	}
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	public static void main(String[] args) {
 		launch(args);
 	}
