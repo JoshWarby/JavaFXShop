@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -23,6 +25,21 @@ public class CartPane extends GridPane{
 		//create labels
 		Label lblTitle = new Label("This is CartPane Tab");
 		this.add(lblTitle, 0, 0);
+		
+		//create items
+		int i;
+		ArrayList<CartItemPane> cartObjects = new ArrayList<>();
+		for (i=0;i<5;i++){
+			cartObjects.add(new CartItemPane("ITEM "+i+"   "));
+			this.add(cartObjects.get(i),0,i+1);
+		}
+		
+		
+		CartItemPane cartList = new CartItemPane();
+		CartItemPane testitem = new CartItemPane();
+		//this.add(testitem,0,1);
+		CartItemPane testitem2 = new CartItemPane();
+		//.add(testitem2, 0, 2);
 		
 	}
 

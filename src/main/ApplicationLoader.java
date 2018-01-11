@@ -1,9 +1,12 @@
 package main;
 
+import controller.CustomerController;
 //import controller.DiceGameController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.*;
+import view.*;
 
 //import controller and view
 //import model.DiceGameEngine;
@@ -17,9 +20,9 @@ public class ApplicationLoader extends Application{
 	@Override
 	public void init() {
 		//create model and view and pass their references to the controller
-		//DiceGameEngine model = new DiceGameEngine();
+		Customer cu = new Customer();
 		view = new ShoppingRootPane();
-		//new DiceGameController(view, model);
+		new CustomerController(view, cu);
 	}
 
 	@Override

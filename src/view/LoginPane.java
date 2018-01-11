@@ -60,7 +60,7 @@ public class LoginPane extends GridPane {
 	}
 	
 	//method to attach the play button handler
-	public void addSubmitLoginListener(EventHandler<ActionEvent> handler) {
+	public void addSubmitHandler(EventHandler<ActionEvent> handler) {
 		btnPlay.setOnAction(handler);
 	}
 
