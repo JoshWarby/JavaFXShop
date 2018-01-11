@@ -15,6 +15,7 @@ public class CustomerController {
 	private MarketPane mp;
 	private CartPane cp;
 	private Customer cu;
+	private Name cname = new Name();
 	
 	public CustomerController(ShoppingRootPane view, Customer cu) {
 		//initialise model and view fields
@@ -33,7 +34,14 @@ public class CustomerController {
 	private class LoginSubmitHandler implements EventHandler<ActionEvent> {
 
 		public void handle(ActionEvent e) {
-			System.out.println("FUCKYES");
+			cname.setFirstName(lp.getFNameInput());
+			cname.setFamilyName(lp.getLNameInput());
+			System.out.println(cname.toString());
+			cu.setCustomerName(cname);
+			String idp1 = cu.getCustomerName().getFirstName().substring(0,4);
+			String idp2 = cu.getCustomerName().getFamilyName().substring(0, 4);
+			cu.setCustomerId(idp1+idp2);
+			System.out.println(cu.toString());
 	}
 	
 	}
