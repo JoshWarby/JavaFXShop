@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import model.Product;
 //
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +23,10 @@ import javafx.scene.control.TableView;
 
 public class MarketPane extends GridPane{
 	
+	Label customerIDlbl = new Label("---------");
+	TableView table = new TableView();
+
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public MarketPane (){
 		//styling
@@ -30,12 +35,15 @@ public class MarketPane extends GridPane{
 		this.setHgap(20);
 		this.setAlignment(Pos.CENTER);
 		
+		customerIDlbl.setWrapText(true);
 		//create labels
 		Label lblTitle = new Label("This is MarketPane Tab");
 		this.add(lblTitle, 0, 0);
 		
+		
+		this.add(customerIDlbl, 1, 0);
+		
 		//create table
-		TableView table = new TableView();
 		table.setEditable(true);
 		TableColumn itemNameCol = new TableColumn("Item");
 		TableColumn itemPriceCol = new TableColumn("Price");
@@ -44,10 +52,14 @@ public class MarketPane extends GridPane{
 		table.getColumns().addAll(itemNameCol, itemPriceCol,itemRewardsCol);
 		this.add(table, 0, 1);
 	    
-		//create list
-		//ObservableList<String> seasonList = FXCollections.<String>observableArrayList("Item 1 \t\t\t £1", "Item 2 YABOI \t\t\t £4", "Item 3", "Item 4");
-		//ListView<String> seasons = new ListView<>(seasonList);
-		//this.add(seasons, 1, 1);
-	}
 
+	}
+	
+	public void changeCustomerIDlbl(String idhere){
+		customerIDlbl.setText(""+idhere);
+	}
+	
+	public void addProduct(Product pd){
+		//I DONT KNOW
+	}
 }

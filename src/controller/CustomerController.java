@@ -31,8 +31,8 @@ public class CustomerController {
 	private void attachEventHandlers() {
 		lp.addSubmitHandler(new LoginSubmitHandler()); //attaches button handler
 	}
+	
 	private class LoginSubmitHandler implements EventHandler<ActionEvent> {
-
 		public void handle(ActionEvent e) {
 			cname.setFirstName(lp.getFNameInput());
 			cname.setFamilyName(lp.getLNameInput());
@@ -42,7 +42,12 @@ public class CustomerController {
 			String idp2 = cu.getCustomerName().getFamilyName().substring(0, 4);
 			cu.setCustomerId(idp1+idp2);
 			System.out.println(cu.toString());
+			mp.changeCustomerIDlbl(cu.getCustomerId());
+			view.changeTab(1);
+			}
 	}
 	
-	}
+	//public void add(Product pd){
+	//	mp.
+	//}
 }
