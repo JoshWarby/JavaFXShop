@@ -1,5 +1,8 @@
 package main;
 
+import java.io.File;
+import java.util.Scanner;
+
 import controller.CustomerController;
 
 import javafx.application.Application;
@@ -25,13 +28,14 @@ public class ApplicationLoader extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		stage.setMinWidth(700); //sets min width and height for the stage window
-		stage.setMinHeight(300);
+		stage.setMinHeight(200);
 		stage.setTitle("Let's Shop");
 		stage.setScene(new Scene(view));
 		stage.show();
 	}
 
 	public static void main(String[] args) {
+		//populate list
 		launch(args);
 	}
 }

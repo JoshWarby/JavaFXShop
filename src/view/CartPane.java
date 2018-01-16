@@ -12,8 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import model.Cart;
 
 public class CartPane extends GridPane{
+	private ArrayList<CartItemPane> cartObjects = new ArrayList<>();
 	
 	public CartPane (){
 		//styling
@@ -28,19 +30,25 @@ public class CartPane extends GridPane{
 		
 		//create items
 		int i;
-		ArrayList<CartItemPane> cartObjects = new ArrayList<>();
-		for (i=0;i<5;i++){
-			cartObjects.add(new CartItemPane("ITEM "+i+"   "));
-			this.add(cartObjects.get(i),0,i+1);
-		}
 		
 		
-		CartItemPane cartList = new CartItemPane();
-		CartItemPane testitem = new CartItemPane();
+		
+		//CartItemPane cartList = new CartItemPane();
+		//CartItemPane testitem = new CartItemPane();
 		//this.add(testitem,0,1);
-		CartItemPane testitem2 = new CartItemPane();
+		//CartItemPane testitem2 = new CartItemPane();
 		//.add(testitem2, 0, 2);
 		
 	}
 
+public void updateCartView(Cart cart){
+	int i;
+	cartObjects.clear();
+	for (i=0;i<cart.numberOfOrders();i++){
+		cartObjects.add(new CartItemPane(cart.getOrder(i)));
+		}
+	for (i=0;i<cartObjects.size();i++){
+		this.add(cartObjects.get(i),0,i+1);
+		}
+	}
 }

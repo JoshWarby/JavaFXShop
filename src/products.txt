@@ -1,0 +1,2 @@
+PRDCTCODE,Product Name1,50
+PRDCTCODE,Product Name2,50

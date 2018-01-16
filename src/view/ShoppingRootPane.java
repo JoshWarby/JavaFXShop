@@ -25,6 +25,8 @@ public class ShoppingRootPane extends TabPane{
 		//add tabs to tab pane
 		this.getTabs().addAll(t0,t1, t2);
 		
+		setVisible(true);
+		
 	}
 	
 	public MarketPane getMarketPane() {
