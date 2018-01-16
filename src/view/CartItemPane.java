@@ -15,6 +15,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import model.Cart;
 import model.Order;
 
 public class CartItemPane extends HBox implements Observer {
@@ -24,7 +25,7 @@ public class CartItemPane extends HBox implements Observer {
 	private Label numberField;
 	private Label nameField;
 
-	public CartItemPane(Order order) {
+	public CartItemPane(Order order, Cart cart) {
 		//set the style for this pane 
 		//this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		//this.getStyleClass().add("counter-pane");
@@ -52,6 +53,10 @@ public class CartItemPane extends HBox implements Observer {
             public void handle(ActionEvent event) {
                 order.decreaseQuantity();
                 numberField.setText("  "+Integer.toString(order.getQuantity())+"  ");;
+                if (order.getQuantity() == 0){
+                	cart.removeOrder(order);
+                	hideAll();
+                }
             }
         });
 
@@ -60,29 +65,13 @@ public class CartItemPane extends HBox implements Observer {
 
 	}
 
+
 	
-	public CartItemPane(String in) {
-		//set the style for this pane 
-		//this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		//this.getStyleClass().add("counter-pane");
-
-		String itemName = in;
+	
+	public void hideAll(){
+		this.getChildren().remove(0, this.getChildren().size());
 		
-		nameField = new Label(itemName);
-		// ------------Number Field-----------------------
-		numberField = new Label("0");
-
-		//---------------Plus Button---------------------
-		plusBtn = new Button("+");
-
-		//---------------Minus Button---------------------
-		minusBtn = new Button("-");
-
-		//add nodes to the scene graph for this pane
-		this.getChildren().addAll(nameField,minusBtn, numberField, plusBtn);
-
 	}
-
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub

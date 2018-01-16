@@ -104,8 +104,4 @@ public class CustomerController {
 			view.changeTab(1);
 			}
 	}
-	
-	//public void add(Product pd){
-	//	mp.
-	//}
 }

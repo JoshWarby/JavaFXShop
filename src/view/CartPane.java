@@ -39,7 +39,7 @@ public void updateCartView(Cart cart){
 	
 	//populate list and add objects
 	for (i=0;i<cart.numberOfOrders();i++){
-		cartObjects.add(new CartItemPane(cart.getOrder(i)));
+		cartObjects.add(new CartItemPane(cart.getOrder(i),cart));
 		}
 	for (i=0;i<cartObjects.size();i++){
 		this.add(cartObjects.get(i),0,i+1);
