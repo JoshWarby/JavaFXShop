@@ -1,2 +1,2 @@
-PRDCTCODE0,Product Name1,50
-PRDCTCODE1,Product Name2,50
+ITEM1      Object 1      10
+ITEM2      Object 2      1

@@ -17,6 +17,8 @@ import model.Cart;
 public class CartPane extends GridPane{
 	private ArrayList<CartItemPane> cartObjects = new ArrayList<>();
 	
+	public Label lblTotalCost = new Label("CARTCOST");
+	
 	public CartPane (){
 		//styling
 		this.setPadding(new Insets(80, 80, 80, 80));
@@ -26,7 +28,10 @@ public class CartPane extends GridPane{
 		
 		//create labels
 		Label lblTitle = new Label("This is CartPane Tab");
+		Label lblCostText = new Label("Total Cost (pennies):");
 		this.add(lblTitle, 0, 0);
+		this.add(lblCostText,1,1);
+		this.add(lblTotalCost,2,1);
 		
 	}
 
@@ -39,7 +44,7 @@ public void updateCartView(Cart cart){
 	
 	//populate list and add objects
 	for (i=0;i<cart.numberOfOrders();i++){
-		cartObjects.add(new CartItemPane(cart.getOrder(i),cart));
+		cartObjects.add(new CartItemPane(cart.getOrder(i),cart,lblTotalCost));
 		}
 	for (i=0;i<cartObjects.size();i++){
 		this.add(cartObjects.get(i),0,i+1);

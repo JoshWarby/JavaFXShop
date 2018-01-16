@@ -25,12 +25,13 @@ public class CartItemPane extends HBox implements Observer {
 	private Label numberField;
 	private Label nameField;
 
-	public CartItemPane(Order order, Cart cart) {
+	public CartItemPane(Order order, Cart cart,Label totalCost) {
 		//set the style for this pane 
 		//this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		//this.getStyleClass().add("counter-pane");
 
 		String itemName = order.getProduct().getDescription();
+		totalCost.setText(Integer.toString(cart.getTotalCost()));
 		
 		nameField = new Label(itemName+"  ");
 		// ------------Number Field-----------------------
@@ -42,8 +43,10 @@ public class CartItemPane extends HBox implements Observer {
             @Override
             public void handle(ActionEvent event) {
                 order.increaseQuantity();
-                numberField.setText("  "+Integer.toString(order.getQuantity())+"  ");;
+                numberField.setText("  "+Integer.toString(order.getQuantity())+"  ");
+                totalCost.setText(Integer.toString(cart.getTotalCost()));
             }
+            
         });
 
 		//---------------Minus Button---------------------
@@ -57,6 +60,7 @@ public class CartItemPane extends HBox implements Observer {
                 	cart.removeOrder(order);
                 	hideAll();
                 }
+                totalCost.setText(Integer.toString(cart.getTotalCost()));
             }
         });
 

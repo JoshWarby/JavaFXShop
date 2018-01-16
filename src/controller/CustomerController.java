@@ -63,7 +63,7 @@ public class CustomerController {
 		public void handle(ActionEvent e) {
 			boolean cont = true;
 			System.out.println(mp.getSelectedItem());
-			String[] selectedInfo = mp.getSelectedItem().split(",");
+			String[] selectedInfo = mp.getSelectedItem().split("      ");
 			Product selectedProduct = new Product();
 			selectedProduct.setProductCode(selectedInfo[0]);
 			selectedProduct.setDescription(selectedInfo[1]);

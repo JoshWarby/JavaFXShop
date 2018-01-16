@@ -46,7 +46,7 @@ public class MarketPane extends GridPane{
 		
 		customerIDlbl.setWrapText(true);
 		//create labels
-		Label lblTitle = new Label("This is MarketPane Tab");
+		Label lblTitle = new Label("ProductID    Product Name    Price(pennies)");
 		this.add(lblTitle, 0, 0);
 		this.add(customerIDlbl, 1, 0);
 		
