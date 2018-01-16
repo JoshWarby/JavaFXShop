@@ -34,8 +34,8 @@ public void updateCartView(Cart cart){
 	int i;
 	
 	//clear list and old objects
+	this.getChildren().remove(this.getChildren().size()-cartObjects.size(),this.getChildren().size());
 	cartObjects.clear();
-	this.getChildren().remove(1,this.getChildren().size());
 	
 	//populate list and add objects
 	for (i=0;i<cart.numberOfOrders();i++){
