@@ -28,22 +28,16 @@ public class CartPane extends GridPane{
 		Label lblTitle = new Label("This is CartPane Tab");
 		this.add(lblTitle, 0, 0);
 		
-		//create items
-		int i;
-		
-		
-		
-		//CartItemPane cartList = new CartItemPane();
-		//CartItemPane testitem = new CartItemPane();
-		//this.add(testitem,0,1);
-		//CartItemPane testitem2 = new CartItemPane();
-		//.add(testitem2, 0, 2);
-		
 	}
 
 public void updateCartView(Cart cart){
 	int i;
+	
+	//clear list and old objects
 	cartObjects.clear();
+	this.getChildren().remove(1,this.getChildren().size());
+	
+	//populate list and add objects
 	for (i=0;i<cart.numberOfOrders();i++){
 		cartObjects.add(new CartItemPane(cart.getOrder(i)));
 		}

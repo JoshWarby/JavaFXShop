@@ -35,12 +35,8 @@ public class MarketPane extends GridPane{
     protected List<String> productList = new ArrayList<>();
     protected ListProperty<String> listProperty = new SimpleListProperty<>();
     private Button btnAddCart = new Button("Add to Cart");
-
-
-
-
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
 	public MarketPane (){
 		//styling
 		this.setPadding(new Insets(80, 80, 80, 80));
@@ -62,18 +58,7 @@ public class MarketPane extends GridPane{
 		list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		this.add(list,0,1);
 		//productList
-        listProperty.set(FXCollections.observableArrayList(productList));
-		
-		
-		/* create table
-		table.setEditable(true);
-		TableColumn itemNameCol = new TableColumn("Item");
-		TableColumn itemPriceCol = new TableColumn("Price");
-		TableColumn itemRewardsCol = new TableColumn("Reward Points");
-		itemRewardsCol.setMinWidth(100);
-		table.getColumns().addAll(itemNameCol, itemPriceCol,itemRewardsCol);
-		this.add(table, 0, 1);*/
-	    
+        listProperty.set(FXCollections.observableArrayList(productList));	    
 
 	}
 	
@@ -96,7 +81,4 @@ public class MarketPane extends GridPane{
 		customerIDlbl.setText(""+idhere);
 	}
 	
-	public void addProduct(Product pd){
-		//I DONT KNOW
-	}
 }

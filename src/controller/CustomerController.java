@@ -61,24 +61,34 @@ public class CustomerController {
 	
 	private class AddToCartHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {
+			boolean cont = true;
 			System.out.println(mp.getSelectedItem());
 			String[] selectedInfo = mp.getSelectedItem().split(",");
 			Product selectedProduct = new Product();
 			selectedProduct.setProductCode(selectedInfo[0]);
 			selectedProduct.setDescription(selectedInfo[1]);
 			selectedProduct.setUnitPrice(Integer.parseInt(selectedInfo[2]));
-			Order productOrder = new Order();
-			productOrder.setProduct(selectedProduct);
-			productOrder.increaseQuantity();
-			cart.addOrder(productOrder);
-			cart.setCartId("CART1");
-			cart.setShopper(cu);
-			//cart.setDeliveryDate(deliveryDate);
-			cp.updateCartView(cart);
 			
-		
-		}
-	}
+			for (Order o : cart){
+				if (o.getProduct().getProductCode().equals(selectedProduct.getProductCode())){
+					cont = false;
+				}
+			}
+			
+			if (cont){
+				Order productOrder = new Order();
+				productOrder.setProduct(selectedProduct);
+				productOrder.increaseQuantity();
+				
+				
+				cart.addOrder(productOrder);
+				cart.setCartId("CART1");
+				cart.setShopper(cu);
+				//cart.setDeliveryDate(deliveryDate);
+				cp.updateCartView(cart);
+				}
+			}
+	}		
 	
 	private class LoginSubmitHandler implements EventHandler<ActionEvent> {
 		public void handle(ActionEvent e) {
