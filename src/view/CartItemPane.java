@@ -1,6 +1,8 @@
 package view;
 import java.util.Observable;
 import java.util.Observer;
+
+import controller.CustomerController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -61,6 +63,7 @@ public class CartItemPane extends HBox implements Observer {
                 	hideAll();
                 }
                 totalCost.setText(Integer.toString(cart.getTotalCost()));
+                CustomerController.marketPaneCartNo();
             }
         });
 

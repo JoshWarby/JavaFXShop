@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import model.Cart;
 import model.Product;
 //
 import javafx.collections.FXCollections;
@@ -35,6 +36,7 @@ public class MarketPane extends GridPane{
     protected List<String> productList = new ArrayList<>();
     protected ListProperty<String> listProperty = new SimpleListProperty<>();
     private Button btnAddCart = new Button("Add to Cart");
+    private Label lblInCartNo = new Label("Item's in cart:");
 	
 	@SuppressWarnings({ "unchecked" })
 	public MarketPane (){
@@ -49,6 +51,7 @@ public class MarketPane extends GridPane{
 		Label lblTitle = new Label("ProductID    Product Name    Price(pennies)");
 		this.add(lblTitle, 0, 0);
 		this.add(customerIDlbl, 1, 0);
+		this.add(lblInCartNo, 3,0);
 		
 		//add to cart button
 		this.add(btnAddCart,2,1);
@@ -79,6 +82,11 @@ public class MarketPane extends GridPane{
 	
 	public void changeCustomerIDlbl(String idhere){
 		customerIDlbl.setText(""+idhere);
+	}
+	
+	public void setCartSizeLbl (Cart cart){
+		lblInCartNo.setText("Items in Cart: "+cart.numberOfOrders());
+
 	}
 	
 }

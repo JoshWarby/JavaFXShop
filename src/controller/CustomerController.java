@@ -18,11 +18,12 @@ public class CustomerController {
 	//fields to be used throughout the class
 	private ShoppingRootPane view;
 	private LoginPane lp;
-	private MarketPane mp;
+	private static MarketPane mp;
 	private CartPane cp;
 	private Customer cu;
 	private Name cname = new Name();
-	private Cart cart = new Cart();
+	private static Cart cart = new Cart();
+	private Date date = new Date();
 	
 	public CustomerController(ShoppingRootPane view, Customer cu) {
 		//initialise model and view fields
@@ -57,6 +58,7 @@ public class CustomerController {
 	private void attachEventHandlers() {
 		lp.addSubmitHandler(new LoginSubmitHandler()); //attaches login button handler
 		mp.addToCartHandler(new AddToCartHandler());
+		cp.addBuyNowHandler(new SubmitCartHandler());
 	}
 	
 	private class AddToCartHandler implements EventHandler<ActionEvent>{
@@ -86,6 +88,7 @@ public class CustomerController {
 				cart.setShopper(cu);
 				//cart.setDeliveryDate(deliveryDate);
 				cp.updateCartView(cart);
+				marketPaneCartNo();
 				}
 			}
 	}		
@@ -103,5 +106,16 @@ public class CustomerController {
 			mp.changeCustomerIDlbl(cu.getCustomerId());
 			view.changeTab(1);
 			}
+	}
+	
+	private class SubmitCartHandler implements EventHandler<ActionEvent> {
+		public void handle(ActionEvent e) {
+			cart.setDeliveryDate(cp.getDate(date));
+			System.out.println(cart.getDeliveryDate().toString());
+			System.out.println(cart.toString());
+			}
+		}
+	public static void marketPaneCartNo(){
+		mp.setCartSizeLbl(cart);
 	}
 }
