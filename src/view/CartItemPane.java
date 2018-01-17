@@ -77,6 +77,8 @@ public class CartItemPane extends HBox implements Observer {
 	
 	public void hideAll(){
 		this.getChildren().remove(0, this.getChildren().size());
+		numberField.setText("Removed");
+		this.getChildren().add(numberField);
 		
 	}
 	@Override

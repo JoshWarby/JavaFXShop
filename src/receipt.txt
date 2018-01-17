@@ -1,0 +1,3 @@
+Cart:[contents=[Order:[item=Product:[productCode=ITEM3, description=Object 3, unitPrice =111], quantity=1]
+Order:[item=Product:[productCode=ITEM4, description=Object 4, unitPrice =1111], quantity=1]]
+shopper=Customer:[customerName=Name:[firstName=dsaff, familyName=dsfdsfdsf], customerId=dsafdsfd, rewardPoints=0], deliveryDate=Date:[day=17, month=1, year=2018], cartId=CART1]

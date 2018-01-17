@@ -2,8 +2,11 @@ package controller;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 import javafx.event.ActionEvent;
@@ -113,6 +116,20 @@ public class CustomerController {
 			cart.setDeliveryDate(cp.getDate(date));
 			System.out.println(cart.getDeliveryDate().toString());
 			System.out.println(cart.toString());
+			
+			PrintWriter writer;
+			try {
+				writer = new PrintWriter("src/receipt.txt", "UTF-8");
+				writer.println(cart.toString().replace("]], ", "]]\n").replace(", O", "\nO"));
+				writer.close();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			}
 		}
 	public static void marketPaneCartNo(){
