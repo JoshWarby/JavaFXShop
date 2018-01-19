@@ -100,11 +100,8 @@ public class CustomerController {
 		public void handle(ActionEvent e) {
 			boolean cont = true;
 			System.out.println(mp.getSelectedItem());
-			String[] selectedInfo = mp.getSelectedItem().split("      ");
 			Product selectedProduct = new Product();
-			selectedProduct.setProductCode(selectedInfo[0]);
-			selectedProduct.setDescription(selectedInfo[1]);
-			selectedProduct.setUnitPrice(Integer.parseInt(selectedInfo[2]));
+			selectedProduct = mp.getSelectedItem();
 			
 			for (Order o : cart){
 				if (o.getProduct().getProductCode().equals(selectedProduct.getProductCode())){
@@ -117,7 +114,7 @@ public class CustomerController {
 				productOrder.setProduct(selectedProduct);
 				productOrder.increaseQuantity();
 				
-				
+	
 				cart.addOrder(productOrder);
 				cart.setCartId("CART1");
 				cart.setShopper(cu);

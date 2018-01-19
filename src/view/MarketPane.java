@@ -53,13 +53,15 @@ public class MarketPane extends GridPane{
 		
 		customerIDlbl.setWrapText(true);
 		//create labels
-		Label lblTitle = new Label("ProductID    Product Name    Price(pennies)");
-		this.add(lblTitle, 0, 0);
-		this.add(customerIDlbl, 2, 0);
+		Label plblTitle = new Label("Products");
+		this.add(plblTitle, 0, 0);
+		Label dlblTitle = new Label("DISCOUNTED");
+		this.add(dlblTitle, 1, 0);
+		this.add(customerIDlbl,1, 2);
 		this.add(lblInCartNo, 3,0);
 		
 		//add to cart button
-		this.add(btnAddCart,2,1);
+		this.add(btnAddCart,0,2);
 		
 		//normal list
 		plist.setCellFactory(lv -> new ListCell<Product>() {
@@ -109,8 +111,21 @@ public class MarketPane extends GridPane{
 			btnAddCart.setOnAction(handler);
 		}
 	
-	public String getSelectedItem(){
-		return (String) plist.getSelectionModel().getSelectedItem();
+	public Product getSelectedItem(){
+		if (plist.getSelectionModel().getSelectedIndex()>=0){
+			return (Product) plist.getSelectionModel().getSelectedItem();
+		}
+		else if (dlist.getSelectionModel().getSelectedIndex()>=0){
+			DiscountProduct dp = (DiscountProduct) dlist.getSelectionModel().getSelectedItem();
+			Product returnp = new Product();
+			returnp.setDescription(dp.getDescription());
+			returnp.setProductCode(dp.getProductCode());
+			returnp.setUnitPrice(dp.getUnitPrice());
+			return returnp;
+		}
+		else{
+			return null;
+		}
 
 	}
 	
