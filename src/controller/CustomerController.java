@@ -2,11 +2,15 @@ package controller;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.Set;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -36,7 +40,7 @@ public class CustomerController {
 		mp = view.getMarketPane();
 		cp = view.getCartPane();
 		
-		//file to strings
+		/*file to strings
 		try {
 			File file = new File("src/products.txt");
 			FileReader fileReader = new FileReader(file);
@@ -52,6 +56,34 @@ public class CustomerController {
 			System.out.println("Contents of file:");
 			System.out.println(stringBuffer.toString());
 		} catch (IOException e) {
+			e.printStackTrace();
+		}*/
+		
+		//Get that object
+		
+	      try {
+	    	  FileInputStream fis = new FileInputStream("src/o.tmp");
+	  	      ObjectInputStream ois = new ObjectInputStream(fis);
+	  	    try {
+				AvailableProducts ap = (AvailableProducts)ois.readObject();
+				RewardProcessor rp = ap.getRP();
+				List<Product> apl = ap.getAP();
+				List<DiscountProduct> adl = ap.getAD();
+				int i;
+				for (Product tmpP : apl){
+					mp.addProductToPList(tmpP);
+				}
+				for (DiscountProduct tmpD : adl){
+					mp.addProductToDList(tmpD);
+				}
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ois.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

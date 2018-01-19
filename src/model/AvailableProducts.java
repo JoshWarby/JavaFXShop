@@ -1,17 +1,17 @@
 package model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AvailableProducts implements Serializable{
-	private Set<Product> AvailableProducts;
-	private Set<DiscountProduct> AvailableDiscounted;
+	private List<Product> AvailableProducts;
+	private List<DiscountProduct> AvailableDiscounted;
 	private RewardProcessor Rewards;
 	
 	public AvailableProducts(){
-		AvailableProducts = new HashSet<Product>();
-		AvailableDiscounted = new HashSet<DiscountProduct>();
+		AvailableProducts = new ArrayList<Product>();
+		AvailableDiscounted = new ArrayList<DiscountProduct>();
 		Rewards = new RewardProcessor();
 	}
 	
@@ -25,4 +25,13 @@ public class AvailableProducts implements Serializable{
 		Rewards = r;
 	}
 
+	public RewardProcessor getRP(){
+		return Rewards;
+	}
+	public List<Product> getAP(){
+		return AvailableProducts;
+	}
+	public List<DiscountProduct> getAD(){
+		return AvailableDiscounted;
+	}
 }

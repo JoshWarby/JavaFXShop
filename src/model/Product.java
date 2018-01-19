@@ -3,6 +3,8 @@ package model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javafx.beans.value.ObservableValue;
+
 /**
  * A product item has a unique product code, description, 
  * and price per unit. The price is given in pence.
@@ -91,6 +93,11 @@ public class Product implements Comparable<Product>,Serializable{
 	@Override
 	public int hashCode() {
 		return Objects.hash(productCode, unitPrice, description);
+	}
+
+	public String titleProperty() {
+		// TODO Auto-generated method stub
+		return description;
 	}
 
 	
