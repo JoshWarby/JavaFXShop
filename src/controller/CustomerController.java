@@ -1,5 +1,7 @@
 package controller;
 
+import model.*;
+import view.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,13 +12,9 @@ import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Set;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-import model.*;
-import view.*;
 
 
 public class CustomerController {

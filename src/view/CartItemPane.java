@@ -1,7 +1,9 @@
 package view;
+
 import java.util.Observable;
 import java.util.Observer;
-
+import model.Cart;
+import model.Order;
 import controller.CustomerController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,13 +14,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import model.Cart;
-import model.Order;
+
 
 public class CartItemPane extends HBox implements Observer {
 
