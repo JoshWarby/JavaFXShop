@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ import java.util.Set;
  * 
  * @author la
  */
-public class RewardProcessor {
+public class RewardProcessor implements Serializable{
 
 	private Set<Product> products;
 	

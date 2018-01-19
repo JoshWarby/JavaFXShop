@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.Scanner;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,6 +26,7 @@ public class CustomerController {
 	private Name cname = new Name();
 	private static Cart cart = new Cart();
 	private Date date = new Date();
+	private AvailableProducts ap;
 	
 	public CustomerController(ShoppingRootPane view, Customer cu) {
 		//initialise model and view fields
