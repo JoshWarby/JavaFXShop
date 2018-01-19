@@ -1,32 +1,26 @@
 package view;
 
+import model.Cart;
+import model.DiscountProduct;
+import model.Product;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.Cart;
-import model.DiscountProduct;
-import model.Product;
-//
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.security.auth.callback.Callback;
-
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ListView;
-//
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.SelectionMode;

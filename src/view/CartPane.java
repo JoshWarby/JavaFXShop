@@ -1,7 +1,8 @@
 package view;
 
+import model.Cart;
+import model.Date;
 import java.util.ArrayList;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -10,8 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import model.Cart;
-import model.Date;
 
 public class CartPane extends GridPane{
 	private ArrayList<CartItemPane> cartObjects = new ArrayList<>();
