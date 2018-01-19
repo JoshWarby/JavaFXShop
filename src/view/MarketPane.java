@@ -71,7 +71,7 @@ public class MarketPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getDescription() ; // get text from item
+		            String text = item.getDescription()+", PRICE: "+ item.getUnitPrice() ; // get text from item
 		            setText(text);
 		        }
 		    }
@@ -92,7 +92,7 @@ public class MarketPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getDescription()+"DISCOUNTED" ; // get text from item
+		            String text = item.getDescription()+", PRICE: "+ item.getUnitPrice()+"(-"+item.getDiscountRate()*100+"%)" ; // get text from item
 		            setText(text);
 		        }
 		    }

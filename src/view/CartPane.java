@@ -31,10 +31,8 @@ public class CartPane extends GridPane{
 		this.add(btnBuyNow,1,3);
 		
 		//create labels
-		Label lblTitle = new Label("This is CartPane Tab");
 		Label lblCostText = new Label("Total Cost (pennies):");
-		this.add(lblTitle, 0, 0);
-		this.add(lblCostText,1,1);
+		this.add(lblCostText,0,0);
 		this.add(lblTotalCost,2,1);
 		
 		//date picker

@@ -31,6 +31,7 @@ public class CustomerController {
 	private static Cart cart = new Cart();
 	private Date date = new Date();
 	private AvailableProducts ap;
+	private RewardProcessor rp;
 	
 	public CustomerController(ShoppingRootPane view, Customer cu) {
 		//initialise model and view fields
@@ -40,28 +41,7 @@ public class CustomerController {
 		mp = view.getMarketPane();
 		cp = view.getCartPane();
 		
-		/*file to strings
 		try {
-			File file = new File("src/products.txt");
-			FileReader fileReader = new FileReader(file);
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			StringBuffer stringBuffer = new StringBuffer();
-			String line;
-			while ((line = bufferedReader.readLine()) != null) {
-				mp.addProductToList(line);
-				stringBuffer.append(line);
-				stringBuffer.append("\n");
-			}
-			fileReader.close();
-			System.out.println("Contents of file:");
-			System.out.println(stringBuffer.toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
-		
-		//Get that object
-		
-	      try {
 	    	  FileInputStream fis = new FileInputStream("src/o.tmp");
 	  	      ObjectInputStream ois = new ObjectInputStream(fis);
 	  	    try {
@@ -143,7 +123,7 @@ public class CustomerController {
 	private class SubmitCartHandler implements EventHandler<ActionEvent> {
 		public void handle(ActionEvent e) {
 			cart.setDeliveryDate(cp.getDate(date));
-			System.out.println(cart.getDeliveryDate().toString());
+			//cu.addRewardPoints(rp.rewardPoints(cart));
 			System.out.println(cart.toString());
 			
 			PrintWriter writer;

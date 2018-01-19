@@ -33,7 +33,7 @@ public class CartItemPane extends HBox implements Observer {
 		//this.getStyleClass().add("counter-pane");
 
 		String itemName = order.getProduct().getDescription();
-		totalCost.setText(Integer.toString(cart.getTotalCost()));
+		totalCost.setText("Total Cost £"+Integer.toString(cart.getTotalCost()));
 		
 		nameField = new Label(itemName+"  ");
 		// ------------Number Field-----------------------
@@ -46,7 +46,7 @@ public class CartItemPane extends HBox implements Observer {
             public void handle(ActionEvent event) {
                 order.increaseQuantity();
                 numberField.setText("  "+Integer.toString(order.getQuantity())+"  ");
-                totalCost.setText(Integer.toString(cart.getTotalCost()));
+                totalCost.setText("Total Cost £"+Integer.toString(cart.getTotalCost()));
             }
             
         });
@@ -62,18 +62,18 @@ public class CartItemPane extends HBox implements Observer {
                 	cart.removeOrder(order);
                 	hideAll();
                 }
-                totalCost.setText(Integer.toString(cart.getTotalCost()));
+                totalCost.setText("Total Cost £"+Integer.toString(cart.getTotalCost()));
                 CustomerController.marketPaneCartNo();
             }
         });
 
 		//add nodes to the scene graph for this pane
 		this.getChildren().addAll(nameField,minusBtn, numberField, plusBtn);
+		
 
 	}
 
 
-	
 	
 	public void hideAll(){
 		this.getChildren().remove(0, this.getChildren().size());

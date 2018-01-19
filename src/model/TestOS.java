@@ -11,7 +11,7 @@ public class TestOS {
 		Product p = new Product();
 		p.setDescription("PRODUCT");
 		p.setProductCode("NORM");
-		p.setUnitPrice(0);
+		p.setUnitPrice(10);
 		ap.addAP(p);
 		
 		DiscountProduct d = new DiscountProduct();
