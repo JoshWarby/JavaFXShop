@@ -27,6 +27,9 @@ import javafx.scene.control.SelectionMode;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 public class MarketPane extends GridPane{
 	
@@ -53,6 +56,12 @@ public class MarketPane extends GridPane{
 		this.add(dlblTitle, 1, 0);
 		this.add(customerIDlbl,1, 2);
 		this.add(lblInCartNo, 3,0);
+		
+		//image
+		GridPane imggridpane = new GridPane();
+		Image image = new Image("File:src/shopping-cart.png");
+		imggridpane.getChildren().add(new ImageView(image));
+		this.add(imggridpane, 2,0);
 		
 		//add to cart button
 		this.add(btnAddCart,0,2);
