@@ -1,6 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
+
+import javafx.beans.value.ObservableValue;
 
 /**
  * A product item has a unique product code, description, 
@@ -8,7 +11,7 @@ import java.util.Objects;
  * 
  * @author la
  */
-public class Product implements Comparable<Product> {
+public class Product implements Comparable<Product>,Serializable{
 	
 	//fields
 	private String productCode;
@@ -90,6 +93,11 @@ public class Product implements Comparable<Product> {
 	@Override
 	public int hashCode() {
 		return Objects.hash(productCode, unitPrice, description);
+	}
+
+	public String titleProperty() {
+		// TODO Auto-generated method stub
+		return description;
 	}
 
 	

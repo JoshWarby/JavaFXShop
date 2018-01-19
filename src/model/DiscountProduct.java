@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * A discount product is a product with a discount applied .
  * 
  * @author la
  */
-public class DiscountProduct extends Product {
+public class DiscountProduct extends Product implements Serializable{
 
 	//fields
 	private double discountRate;
