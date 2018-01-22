@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 
 /**
  * An order can be placed for a given quantity of a item
@@ -13,7 +14,7 @@ package model;
  *
  * @author la
  */
-public class Order implements Comparable<Order> {
+public class Order implements Comparable<Order>,Serializable {
 
 	//fields
 	private Product item;

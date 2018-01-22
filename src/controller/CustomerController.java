@@ -6,9 +6,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -44,6 +46,8 @@ public class CustomerController {
 	  	      ObjectInputStream ois = new ObjectInputStream(fis);
 	  	    try {
 				AvailableProducts ap = (AvailableProducts)ois.readObject();
+				cart = ap.getCart();
+				cp.updateCartView(cart);
 				RewardProcessor rp = ap.getRP();
 				List<Product> apl = ap.getAP();
 				List<DiscountProduct> adl = ap.getAD();
@@ -142,4 +146,34 @@ public class CustomerController {
 	public static void marketPaneCartNo(){
 		mp.setCartSizeLbl(cart);
 	}
+	public void uponClose(){
+		AvailableProducts ap = new AvailableProducts();
+	try {
+    	  FileInputStream fis = new FileInputStream("src/o.tmp");
+  	      ObjectInputStream ois = new ObjectInputStream(fis);
+  	    try {
+  	    	ap = (AvailableProducts)ois.readObject();
+  	    	ap.setCart(cart);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ois.close();
+		fis.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	try {
+    	FileOutputStream fos = new FileOutputStream("src/o.tmp");
+	    ObjectOutputStream oos = new ObjectOutputStream(fos);
+	    oos.writeObject(ap);
+		oos.close();
+		fos.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
 }

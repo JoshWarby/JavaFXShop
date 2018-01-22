@@ -25,6 +25,9 @@ public class TestOS {
 		r.addProduct(p);
 		ap.addRP(r);
 		
+		Cart c = new Cart();
+		ap.setCart(c);
+		
 	    try {
 	    	FileOutputStream fos = new FileOutputStream("src/o.tmp");
 		    ObjectOutputStream oos = new ObjectOutputStream(fos);

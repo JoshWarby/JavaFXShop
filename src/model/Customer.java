@@ -1,12 +1,14 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * A customer has a name and customer identity number
  * and a number of reward points.
  * 
  * @author la
  */
-public class Customer {
+public class Customer implements Serializable {
 
 	//fields
 	private Name customerName;

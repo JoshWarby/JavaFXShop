@@ -15,6 +15,7 @@ import view.*;
 public class ApplicationLoader extends Application{
 
 	private ShoppingRootPane view;
+	private CustomerController cc;
 
 
 	@Override
@@ -22,7 +23,7 @@ public class ApplicationLoader extends Application{
 		//create model and view and pass their references to the controller
 		Customer cu = new Customer();
 		view = new ShoppingRootPane();
-		new CustomerController(view, cu);
+		cc = new CustomerController(view, cu);
 	}
 
 	@Override
@@ -37,5 +38,11 @@ public class ApplicationLoader extends Application{
 	public static void main(String[] args) {
 		//populate list
 		launch(args);
+	}
+	
+	@Override
+	public void stop(){
+	    System.out.println("Stage is closing");
+	    cc.uponClose();
 	}
 }

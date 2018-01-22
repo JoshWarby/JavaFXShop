@@ -1,12 +1,14 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * A name has a first name and a family name.
  * There is an option to produce a full name by combining these.
  * 
  * @author la
  */
-public class Name {
+public class Name implements Serializable {
 
 	//fields
 	private String firstName;
