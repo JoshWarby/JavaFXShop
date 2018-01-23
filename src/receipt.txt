@@ -1,3 +1,3 @@
-Cart:[contents=[Order:[item=Product:[productCode=NORM, description=PRODUCT, unitPrice =10], quantity=3]
-Order:[item=Product:[productCode=DISCOUNTED, description=DISCOUNTED PRODUCT, unitPrice =80], quantity=4]]
-shopper=Customer:[customerName=Name:[firstName=sdfdsf, familyName=sdfdsfsdf], customerId=sdfdsdfd, rewardPoints=0], deliveryDate=Date:[day=30, month=1, year=2018], cartId=CART1]
+Cart:[contents=[Order:[item=Product:[productCode=NORM, description=PRODUCT, unitPrice =10], quantity=4]
+Order:[item=Product:[productCode=DISCOUNTED, description=DISCOUNTED PRODUCT, unitPrice =80], quantity=5]]
+shopper=Customer:[customerName=Name:[firstName=, familyName=], customerId=, rewardPoints=0], deliveryDate=Date:[day=17, month=1, year=2018], cartId=CART1]
