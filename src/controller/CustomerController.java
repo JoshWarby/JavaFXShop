@@ -41,33 +41,7 @@ public class CustomerController {
 		mp = view.getMarketPane();
 		cp = view.getCartPane();
 		
-		try {
-	    	  FileInputStream fis = new FileInputStream("src/o.tmp");
-	  	      ObjectInputStream ois = new ObjectInputStream(fis);
-	  	    try {
-				AvailableProducts ap = (AvailableProducts)ois.readObject();
-				cart = ap.getCart();
-				cp.updateCartView(cart);
-				RewardProcessor rp = ap.getRP();
-				List<Product> apl = ap.getAP();
-				List<DiscountProduct> adl = ap.getAD();
-				int i;
-				for (Product tmpP : apl){
-					mp.addProductToPList(tmpP);
-				}
-				for (DiscountProduct tmpD : adl){
-					mp.addProductToDList(tmpD);
-				}
-				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			ois.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		grabInfo();
 		
 		//attach event handlers to view using private helper method
 		this.attachEventHandlers();	
@@ -106,6 +80,36 @@ public class CustomerController {
 				}
 			}
 	}		
+	
+	private void grabInfo(){
+		try {
+	    	  FileInputStream fis = new FileInputStream("src/o.tmp");
+	  	      ObjectInputStream ois = new ObjectInputStream(fis);
+	  	    try {
+				AvailableProducts ap = (AvailableProducts)ois.readObject();
+				cart = ap.getCart();
+				cp.updateCartView(cart);
+				RewardProcessor rp = ap.getRP();
+				List<Product> apl = ap.getAP();
+				List<DiscountProduct> adl = ap.getAD();
+				int i;
+				for (Product tmpP : apl){
+					mp.addProductToPList(tmpP);
+				}
+				for (DiscountProduct tmpD : adl){
+					mp.addProductToDList(tmpD);
+				}
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ois.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	private class LoginSubmitHandler implements EventHandler<ActionEvent> {
 		public void handle(ActionEvent e) {
