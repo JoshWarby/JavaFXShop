@@ -1,3 +1,5 @@
-Cart:[contents=[Order:[item=Product:[productCode=NORM, description=PRODUCT, unitPrice =10], quantity=4]
-Order:[item=Product:[productCode=DISCOUNTED, description=DISCOUNTED PRODUCT, unitPrice =80], quantity=5]]
-shopper=Customer:[customerName=Name:[firstName=, familyName=], customerId=, rewardPoints=0], deliveryDate=Date:[day=17, month=1, year=2018], cartId=CART1]
+Cart:[contents=[Order:[item=Product:[productCode=sdfdsf, description=sdfds, unitPrice =2323], quantity=6]
+Order:[item=Product:[productCode=dsfdsf, description=sdfdsf, unitPrice =324324], quantity=7]
+Order:[item=Product:[productCode=asdasd, description=asdasd, unitPrice =4343434], quantity=5]
+Order:[item=Product:[productCode=sdfds, description=dsfd, unitPrice =43], quantity=5]]
+shopper=Customer:[customerName=Name:[firstName=asdas, familyName=dasdas], customerId=asdadasd, rewardPoints=0], deliveryDate=Date:[day=19, month=1, year=2018], cartId=CART1]

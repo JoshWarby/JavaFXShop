@@ -35,7 +35,7 @@ public class ProductsPane extends GridPane{
 	protected ListView plist = new ListView();
 	protected ListView dlist = new ListView();
     private Button btnAddProduct = new Button("Add Product");
-    private Button btnRemoveProduct = new Button("Remove Product");
+    private Button btnRemoveProduct = new Button("Remove ProductID");
     private TextField txtID, txtDesc, txtPrice;
 	
 	public ProductsPane (){
@@ -120,6 +120,14 @@ public class ProductsPane extends GridPane{
 		}
 
 	}
+	public Product returnEnteredP(){
+		Product entered = new Product();
+		entered.setDescription(txtDesc.getText());
+		entered.setProductCode(txtID.getText());
+		entered.setUnitPrice(Integer.parseInt(txtPrice.getText()));
+		return entered;
+	}
+	
 	public void clearProducts(){
 		plist.getItems().clear();
 		dlist.getItems().clear();
