@@ -65,7 +65,7 @@ public class ProductsPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getDescription()+", PRICE: "+ item.getUnitPrice() ; // get text from item
+		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice() ; // get text from item
 		            setText(text);
 		        }
 		    }
@@ -126,6 +126,9 @@ public class ProductsPane extends GridPane{
 		entered.setProductCode(txtID.getText());
 		entered.setUnitPrice(Integer.parseInt(txtPrice.getText()));
 		return entered;
+	}
+	public String getEnteredPCode(){
+		return txtID.getText();
 	}
 	
 	public void clearProducts(){

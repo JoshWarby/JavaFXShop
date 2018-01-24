@@ -17,6 +17,10 @@ public class AvailableProducts implements Serializable{
 		savedCart = new Cart();
 	}
 	
+	public void setAPL(List<Product> newapl){
+		AvailableProducts=newapl;
+	}
+	
 	public void addAP(Product p){
 		AvailableProducts.add(p);
 	}

@@ -22,6 +22,8 @@ public class AdminController {
 	private DiscountsPane dp;
 	private AvailableProducts ap;
 	private RewardProcessor rp;
+	private List<Product> apl;
+	private List<DiscountProduct> adl;
 	public AdminController(AdminRootPane view) {
 		//initialise model and view fields
 		this.view = view;
@@ -59,7 +61,52 @@ public class AdminController {
 	}
 	private class RemoveSubmitHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {
+			try {
+		    	  FileInputStream fis = new FileInputStream("src/o.tmp");
+		  	      ObjectInputStream ois = new ObjectInputStream(fis);
+		  	    try {
+					ap = (AvailableProducts)ois.readObject();
+					rp = ap.getRP();
+					apl = ap.getAP();
+					adl = ap.getAD();
+					System.out.println(apl.toString());
+					int i;
+					for (i=0;i<apl.size();i++){
+						if (apl.get(i).getProductCode().equals(pp.getEnteredPCode())){
+							apl.remove(i);
+						}
+					}
+					for (i=0;i<adl.size();i++){
+						if (adl.get(i).getProductCode().equals(pp.getEnteredPCode())){
+							adl.remove(i);
+						}
+					}
+					
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				ois.close();
+				fis.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			ap.setAPL(apl);
+			try {
+		    	FileOutputStream fos = new FileOutputStream("src/o.tmp");
+			    ObjectOutputStream oos = new ObjectOutputStream(fos);
+			    oos.writeObject(ap);
+				oos.close();
+				fos.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			System.out.println("removed");
+			grabInfo();
 		}
 	}
 	private class DiscountSubmitHandler implements EventHandler<ActionEvent>{
@@ -78,8 +125,8 @@ public class AdminController {
 	  	    try {
 				ap = (AvailableProducts)ois.readObject();
 				rp = ap.getRP();
-				List<Product> apl = ap.getAP();
-				List<DiscountProduct> adl = ap.getAD();
+				apl = ap.getAP();
+				adl = ap.getAD();
 				
 				int i;
 				for (Product tmpP : apl){
