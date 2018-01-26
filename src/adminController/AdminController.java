@@ -24,6 +24,8 @@ public class AdminController {
 	private RewardProcessor rp;
 	private List<Product> apl;
 	private List<DiscountProduct> adl;
+	private DiscountProduct todiscounted;
+	private Product toproduct;
 	public AdminController(AdminRootPane view) {
 		//initialise model and view fields
 		this.view = view;
@@ -111,7 +113,70 @@ public class AdminController {
 	}
 	private class DiscountSubmitHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {
-			System.out.println("discounted");
+			try {
+		    	  FileInputStream fis = new FileInputStream("src/o.tmp");
+		  	      ObjectInputStream ois = new ObjectInputStream(fis);
+		  	    try {
+					ap = (AvailableProducts)ois.readObject();
+					rp = ap.getRP();
+					apl = ap.getAP();
+					adl = ap.getAD();
+					System.out.println(apl.toString());
+					int i;
+					for (i=0;i<apl.size();i++){
+						if (apl.get(i).getProductCode().equals(dp.getEnteredPCode())){
+							todiscounted = new DiscountProduct();
+							todiscounted.setProductCode(apl.get(i).getProductCode());
+							todiscounted.setDescription(apl.get(i).getDescription());
+							todiscounted.setUnitPrice(apl.get(i).getUnitPrice());
+							todiscounted.setDiscountRate(dp.getEnteredDRate());
+							ap.addDP(todiscounted);
+							apl.remove(i);
+						}
+					}
+					for (i=0;i<adl.size();i++){
+						if (adl.get(i).getProductCode().equals(dp.getEnteredPCode())){
+							if (dp.getEnteredDRate() == 0){
+								System.out.println("is0");
+								toproduct = new Product();
+								toproduct.setDescription(adl.get(i).getDescription());
+								toproduct.setProductCode(adl.get(i).getProductCode());
+								toproduct.setUnitPrice(adl.get(i).getUnitPrice());
+								ap.addAP(toproduct);
+								adl.remove(i);
+								
+							}
+							else {
+								adl.get(i).setDiscountRate(dp.getEnteredDRate());
+							}
+						}
+					}
+					
+					
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				ois.close();
+				fis.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+			try {
+		    	FileOutputStream fos = new FileOutputStream("src/o.tmp");
+			    ObjectOutputStream oos = new ObjectOutputStream(fos);
+			    oos.writeObject(ap);
+				oos.close();
+				fos.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			System.out.println("Discounted");
+			grabInfo();
 		}
 	}
 	

@@ -44,7 +44,7 @@ public class DiscountsPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getProductCode()+" : "+item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice() ; // get text from item
+		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice() ; // get text from item
 		            setText(text);
 		        }
 		    }
@@ -64,7 +64,7 @@ public class DiscountsPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getProductCode()+" : "+item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice()+"(-"+item.getDiscountRate()*100+"%)" ; // get text from item
+		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice()+"(-"+item.getDiscountRate()*100+"%)" ; // get text from item
 		            setText(text);
 		        }
 		    }
@@ -104,6 +104,18 @@ public class DiscountsPane extends GridPane{
 		plist.getItems().clear();
 		dlist.getItems().clear();
 	}
+	
+	public String getEnteredPCode(){
+		return txtID.getText();
+	}
+	public double getEnteredDRate(){
+		double rate;
+		String enteredpercentage = txtDiscount.getText();
+		rate = (double)Integer.parseInt(enteredpercentage)/(double)100;
+		return rate;
+	}
+	
+	
 	
 	public void addProductToPList (Product p){
 		plist.getItems().add(p);
