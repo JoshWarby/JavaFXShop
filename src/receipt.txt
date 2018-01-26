@@ -1,4 +1,4 @@
 Cart:[contents=[Order:[item=Product:[productCode=NORM, description=PRODUCT, unitPrice =10], quantity=5]
-Order:[item=Product:[productCode=ID1, description=DESK, unitPrice =100], quantity=3]
-Order:[item=Product:[productCode=DISCOUNTED, description=DISCOUNTED PRODUCT, unitPrice =80], quantity=5]]
-shopper=Customer:[customerName=Name:[firstName=Joshua, familyName=Warburton], customerId=JoshWarb, rewardPoints=0], deliveryDate=Date:[day=18, month=4, year=2018], cartId=CART1]
+Order:[item=Product:[productCode=DISCOUNTED, description=DISCOUNTED PRODUCT, unitPrice =80], quantity=9]
+Order:[item=Product:[productCode=gordon, description=sucks, unitPrice =500], quantity=8]]
+shopper=Customer:[customerName=Name:[firstName=heytherte, familyName=uass], customerId=heytuass, rewardPoints=0], deliveryDate=Date:[day=26, month=1, year=2018], cartId=CART1]

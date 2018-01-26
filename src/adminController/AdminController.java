@@ -26,11 +26,13 @@ public class AdminController {
 	private List<DiscountProduct> adl;
 	private DiscountProduct todiscounted;
 	private Product toproduct;
+	private RewardsPane rewardspane;
 	public AdminController(AdminRootPane view) {
 		//initialise model and view fields
 		this.view = view;
 		pp = view.getProductsPane();
 		dp = view.getDiscountsPane();
+		rewardspane = view.getRewardsPane();
 		this.attachEventHandlers();
 		
 		//display products
@@ -41,11 +43,12 @@ public class AdminController {
 		pp.addAddHandler(new AddSubmitHandler()); //attaches add button handler
 		pp.addRemoveHandler(new RemoveSubmitHandler()); //attaches add button handler
 		dp.addDiscountHandler(new DiscountSubmitHandler());
+		rewardspane.addAddRewardHandler(new RewardAddHandler());
+		rewardspane.addRemoveRewardHandler(new RewardRemoveHandler());
 	}
 	private class AddSubmitHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e1) {
 			System.out.println(ap.getAP().toString());
-			grabInfo();
 			ap.addAP(pp.returnEnteredP());
 			try {
 		    	FileOutputStream fos = new FileOutputStream("src/o.tmp");
@@ -59,6 +62,17 @@ public class AdminController {
 			}
 			System.out.println("added");
 			grabInfo();
+		}
+	}
+	
+	private class RewardAddHandler implements EventHandler<ActionEvent>{
+		public void handle(ActionEvent e1) {
+			System.out.println("x");
+		}
+	}
+	private class RewardRemoveHandler implements EventHandler<ActionEvent>{
+		public void handle(ActionEvent e1) {
+			System.out.println("y");
 		}
 	}
 	private class RemoveSubmitHandler implements EventHandler<ActionEvent>{
@@ -181,9 +195,11 @@ public class AdminController {
 	}
 	
 	private void grabInfo(){
+
 		dp.clearProducts();
 		pp.clearProducts();
-
+		rewardspane.clearProducts();
+		//products and discounts
 		try {
 	    	  FileInputStream fis = new FileInputStream("src/o.tmp");
 	  	      ObjectInputStream ois = new ObjectInputStream(fis);
@@ -197,16 +213,22 @@ public class AdminController {
 				for (Product tmpP : apl){
 					pp.addProductToPList(tmpP);
 					dp.addProductToPList(tmpP);
+					if (rp.getSet().contains(tmpP)){
+						rewardspane.addProduct(tmpP);
 				}
+				}
+					
 				for (DiscountProduct tmpD : adl){
 					pp.addProductToDList(tmpD);
 					dp.addProductToDList(tmpD);
 				}
+					
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+	  	    System.out.println(ap.getAD().toString());
 			ois.close();
 			fis.close();
 		} catch (IOException e) {
@@ -216,4 +238,6 @@ public class AdminController {
 		System.out.println(ap.getAP().toString());
 
 	}
+	
 }
+

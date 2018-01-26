@@ -1,5 +1,8 @@
 package adminView;
 
+import model.DiscountProduct;
+import model.Product;
+import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -10,8 +13,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import model.DiscountProduct;
-import model.Product;
+
 
 public class DiscountsPane extends GridPane{
 
@@ -28,13 +30,20 @@ public class DiscountsPane extends GridPane{
 		this.setAlignment(Pos.CENTER);
 		
 		//buttons
-		this.add(btnChangeDiscount,0,2);
+		this.add(btnChangeDiscount,0,3);
+		Label lblID;
+		lblID= new Label("Product ID");
+		Label lblDiscount;
+		lblDiscount = new Label("Discount (%)");
+		this.add(lblID, 0, 1);
+		this.add(lblDiscount, 1, 1);
+		//
 		
 		//text fields
 		txtID= new TextField();
 		txtDiscount= new TextField();
-		this.add(txtID, 0, 1);
-		this.add(txtDiscount, 1, 1);
+		this.add(txtID, 0, 2);
+		this.add(txtDiscount, 1, 2);
 		
 		//normal list
 		plist.setCellFactory(lv -> new ListCell<Product>() {

@@ -10,12 +10,12 @@ public class TestOS {
 		AvailableProducts ap = new AvailableProducts();
 		Product p = new Product();
 		p.setDescription("PRODUCT");
-		p.setProductCode("NORM");
+		p.setProductCode("Prod Disc");
 		p.setUnitPrice(10);
 		ap.addAP(p);
 		
 		DiscountProduct d = new DiscountProduct();
-		d.setDescription("DISCOUNTED PRODUCT");
+		d.setDescription("Dis Desc");
 		d.setProductCode("DISCOUNTED");
 		d.setUnitPrice(100);
 		d.setDiscountRate(0.2);

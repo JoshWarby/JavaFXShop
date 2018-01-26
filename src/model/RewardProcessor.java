@@ -36,6 +36,11 @@ public class RewardProcessor implements Serializable{
 		return points;
 	}
 	
+	//added
+	public Set<Product> getSet(){
+		return products;
+	}
+	
 	@Override
 	public String toString() {
 		return this.getClass().getSimpleName() + "[products=" + products + "]";

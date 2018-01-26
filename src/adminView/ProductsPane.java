@@ -35,9 +35,10 @@ public class ProductsPane extends GridPane{
 	protected ListView plist = new ListView();
 	protected ListView dlist = new ListView();
     private Button btnAddProduct = new Button("Add Product");
-    private Button btnRemoveProduct = new Button("Remove ProductID");
+    private Button btnRemoveProduct = new Button("Remove (Product ID)");
     private TextField txtID, txtDesc, txtPrice;
 	
+	@SuppressWarnings("unchecked")
 	public ProductsPane (){
 		//styling
 		this.setPadding(new Insets(80, 80, 80, 80));
@@ -46,16 +47,24 @@ public class ProductsPane extends GridPane{
 		this.setAlignment(Pos.CENTER);
 		
 		//buttons
-		this.add(btnAddProduct,0,2);
-		this.add(btnRemoveProduct,1,2);
+		this.add(btnAddProduct,0,3);
+		this.add(btnRemoveProduct,1,3);
+		
+		//labels
+		Label lblID = new Label("Product ID");
+		Label lblDesc = new Label("Description");
+		Label lblPrice = new Label("Price (pennies)");
+		this.add(lblID, 0, 1);
+		this.add(lblDesc, 1, 1);
+		this.add(lblPrice, 2, 1);
 		
 		//text fields
 		txtID= new TextField();
 		txtDesc= new TextField();
 		txtPrice= new TextField();
-		this.add(txtID, 0, 1);
-		this.add(txtDesc, 1, 1);
-		this.add(txtPrice, 2, 1);
+		this.add(txtID, 0, 2);
+		this.add(txtDesc, 1, 2);
+		this.add(txtPrice, 2, 2);
 		
 		//normal list
 		plist.setCellFactory(lv -> new ListCell<Product>() {
