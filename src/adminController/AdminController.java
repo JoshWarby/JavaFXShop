@@ -67,7 +67,28 @@ public class AdminController {
 	
 	private class RewardAddHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e1) {
-			System.out.println("x");
+			Product toreward = new Product();
+			toreward.setProductCode(rewardspane.getEnteredPCode());
+			int i;
+			for (i=0;i<apl.size();i++){
+				if (apl.get(i).getProductCode().equals(rewardspane.getEnteredPCode())){
+					toreward.setDescription(apl.get(i).getDescription());
+					toreward.setUnitPrice(apl.get(i).getUnitPrice());
+				}
+			}
+			rp.addProduct(toreward);
+			try {
+		    	FileOutputStream fos = new FileOutputStream("src/o.tmp");
+			    ObjectOutputStream oos = new ObjectOutputStream(fos);
+			    oos.writeObject(ap);
+				oos.close();
+				fos.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("this"+rp.toString());
+			grabInfo();
 		}
 	}
 	private class RewardRemoveHandler implements EventHandler<ActionEvent>{
@@ -214,6 +235,7 @@ public class AdminController {
 					pp.addProductToPList(tmpP);
 					dp.addProductToPList(tmpP);
 					if (rp.getSet().contains(tmpP)){
+						System.out.println("FOUND");
 						rewardspane.addProduct(tmpP);
 				}
 				}

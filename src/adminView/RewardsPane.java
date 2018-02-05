@@ -46,7 +46,7 @@ public class RewardsPane extends GridPane{
 		
 	this.add(txtID, 0, 1);
 	this.add(btnaddID, 1, 1);
-	this.add(btnremoveID, 2, 1);
+	//this.add(btnremoveID, 2, 1);
 	this.add(plist,0,0);
 	
 	

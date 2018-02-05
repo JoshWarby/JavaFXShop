@@ -89,7 +89,7 @@ public class CustomerController {
 				AvailableProducts ap = (AvailableProducts)ois.readObject();
 				cart = ap.getCart();
 				cp.updateCartView(cart);
-				RewardProcessor rp = ap.getRP();
+				rp = ap.getRP();
 				List<Product> apl = ap.getAP();
 				List<DiscountProduct> adl = ap.getAD();
 				int i;
@@ -129,7 +129,7 @@ public class CustomerController {
 	private class SubmitCartHandler implements EventHandler<ActionEvent> {
 		public void handle(ActionEvent e) {
 			cart.setDeliveryDate(cp.getDate(date));
-			//cu.addRewardPoints(rp.rewardPoints(cart));
+			cu.addRewardPoints(rp.rewardPoints(cart));
 			System.out.println(cart.toString());
 			
 			PrintWriter writer;
