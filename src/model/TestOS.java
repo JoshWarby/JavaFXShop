@@ -9,14 +9,14 @@ public class TestOS {
 	public static void main(String[] args) {
 		AvailableProducts ap = new AvailableProducts();
 		Product p = new Product();
-		p.setDescription("PRODUCT");
-		p.setProductCode("Prod Disc");
+		p.setProductCode("PROD");
+		p.setDescription("Normal Product");
 		p.setUnitPrice(10);
 		ap.addAP(p);
 		
 		DiscountProduct d = new DiscountProduct();
-		d.setDescription("Dis Desc");
-		d.setProductCode("DISCOUNTED");
+		d.setProductCode("DIS");
+		d.setDescription("Discounted Product");
 		d.setUnitPrice(100);
 		d.setDiscountRate(0.2);
 		ap.addDP(d);

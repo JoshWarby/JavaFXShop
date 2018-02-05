@@ -2,6 +2,9 @@ package view;
 
 import model.Cart;
 import model.Date;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,7 +20,7 @@ public class CartPane extends GridPane{
 	
 	private Label lblTotalCost = new Label("CARTCOST");
 	private Button btnBuyNow = new Button("Buy Now");
-	private DatePicker datePicker = new DatePicker();
+	private DatePicker datePicker = new DatePicker(LocalDate.now().plusDays(3));
 	
 	public CartPane (){
 		//styling
@@ -27,15 +30,17 @@ public class CartPane extends GridPane{
 		this.setAlignment(Pos.CENTER);
 		
 		//button
-		this.add(btnBuyNow,1,3);
+		this.add(btnBuyNow,1,4);
 		
 		//create labels
-		Label lblCostText = new Label("Total Cost (pennies):");
-		this.add(lblCostText,0,0);
-		this.add(lblTotalCost,2,1);
-		
+		Label lblCartText = new Label("Products:");
+		this.add(lblCartText,0,0);
+		this.add(lblTotalCost,1,1);
+			
 		//date picker
-		this.add(datePicker, 1, 2);
+		Label lbldatepicker = new Label("Delivery Date");
+		this.add(lbldatepicker, 1, 2);
+		this.add(datePicker, 1, 3);
 		
 	}
 

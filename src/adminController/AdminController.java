@@ -21,18 +21,18 @@ public class AdminController {
 	private Customer cu;
 	private DiscountsPane dp;
 	private AvailableProducts ap;
-	private RewardProcessor rp;
+	private RewardProcessor rprocessor;
 	private List<Product> apl;
 	private List<DiscountProduct> adl;
 	private DiscountProduct todiscounted;
 	private Product toproduct;
-	private RewardsPane rewardspane;
+	private RewardsPane rp;
 	public AdminController(AdminRootPane view) {
 		//initialise model and view fields
 		this.view = view;
 		pp = view.getProductsPane();
 		dp = view.getDiscountsPane();
-		rewardspane = view.getRewardsPane();
+		rp = view.getRewardsPane();
 		this.attachEventHandlers();
 		
 		//display products
@@ -43,8 +43,8 @@ public class AdminController {
 		pp.addAddHandler(new AddSubmitHandler()); //attaches add button handler
 		pp.addRemoveHandler(new RemoveSubmitHandler()); //attaches add button handler
 		dp.addDiscountHandler(new DiscountSubmitHandler());
-		rewardspane.addAddRewardHandler(new RewardAddHandler());
-		rewardspane.addRemoveRewardHandler(new RewardRemoveHandler());
+		rp.addAddRewardHandler(new RewardAddHandler());
+		rp.addRemoveRewardHandler(new RewardRemoveHandler());
 	}
 	private class AddSubmitHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e1) {
@@ -68,15 +68,15 @@ public class AdminController {
 	private class RewardAddHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e1) {
 			Product toreward = new Product();
-			toreward.setProductCode(rewardspane.getEnteredPCode());
+			toreward.setProductCode(rp.getEnteredPCode());
 			int i;
 			for (i=0;i<apl.size();i++){
-				if (apl.get(i).getProductCode().equals(rewardspane.getEnteredPCode())){
+				if (apl.get(i).getProductCode().equals(rp.getEnteredPCode())){
 					toreward.setDescription(apl.get(i).getDescription());
 					toreward.setUnitPrice(apl.get(i).getUnitPrice());
 				}
 			}
-			rp.addProduct(toreward);
+			rprocessor.addProduct(toreward);
 			try {
 		    	FileOutputStream fos = new FileOutputStream("src/o.tmp");
 			    ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -87,7 +87,7 @@ public class AdminController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("this"+rp.toString());
+			System.out.println("this"+rprocessor.toString());
 			grabInfo();
 		}
 	}
@@ -103,7 +103,7 @@ public class AdminController {
 		  	      ObjectInputStream ois = new ObjectInputStream(fis);
 		  	    try {
 					ap = (AvailableProducts)ois.readObject();
-					rp = ap.getRP();
+					rprocessor = ap.getRP();
 					apl = ap.getAP();
 					adl = ap.getAD();
 					System.out.println(apl.toString());
@@ -153,7 +153,7 @@ public class AdminController {
 		  	      ObjectInputStream ois = new ObjectInputStream(fis);
 		  	    try {
 					ap = (AvailableProducts)ois.readObject();
-					rp = ap.getRP();
+					rprocessor = ap.getRP();
 					apl = ap.getAP();
 					adl = ap.getAD();
 					System.out.println(apl.toString());
@@ -219,14 +219,14 @@ public class AdminController {
 
 		dp.clearProducts();
 		pp.clearProducts();
-		rewardspane.clearProducts();
+		rp.clearProducts();
 		//products and discounts
 		try {
 	    	  FileInputStream fis = new FileInputStream("src/o.tmp");
 	  	      ObjectInputStream ois = new ObjectInputStream(fis);
 	  	    try {
 				ap = (AvailableProducts)ois.readObject();
-				rp = ap.getRP();
+				rprocessor = ap.getRP();
 				apl = ap.getAP();
 				adl = ap.getAD();
 				
@@ -234,9 +234,9 @@ public class AdminController {
 				for (Product tmpP : apl){
 					pp.addProductToPList(tmpP);
 					dp.addProductToPList(tmpP);
-					if (rp.getSet().contains(tmpP)){
+					if (rprocessor.getSet().contains(tmpP)){
 						System.out.println("FOUND");
-						rewardspane.addProduct(tmpP);
+						rp.addProduct(tmpP);
 				}
 				}
 					

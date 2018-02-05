@@ -38,7 +38,7 @@ public class MarketPane extends GridPane{
 	protected ListView plist = new ListView();
 	protected ListView dlist = new ListView();
     private Button btnAddCart = new Button("Add to Cart");
-    private Label lblInCartNo = new Label("Item's in cart:");
+    private Label lblInCartNo = new Label("Item's in cart: 0");
 	
 	@SuppressWarnings({ "unchecked" })
 	public MarketPane (){
@@ -50,9 +50,9 @@ public class MarketPane extends GridPane{
 		
 		customerIDlbl.setWrapText(true);
 		//create labels
-		Label plblTitle = new Label("Products");
+		Label plblTitle = new Label("Products:");
 		this.add(plblTitle, 0, 0);
-		Label dlblTitle = new Label("DISCOUNTED");
+		Label dlblTitle = new Label("Discounted Products:");
 		this.add(dlblTitle, 1, 0);
 		this.add(customerIDlbl,1, 2);
 		this.add(lblInCartNo, 3,0);

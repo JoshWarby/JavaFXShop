@@ -1,3 +1,13 @@
-Cart:[contents=[Order:[item=Product:[productCode=Josh, description=Joshua, unitPrice =100], quantity=5]
-Order:[item=Product:[productCode=Steve, description=Steven, unitPrice =100], quantity=4]]
-shopper=Customer:[customerName=Name:[firstName=Joshua, familyName=Warburton], customerId=JoshWarb, rewardPoints=10], deliveryDate=Date:[day=21, month=2, year=2018], cartId=CART1]
+Cart:
+contents=
+Order:
+item=Product:
+productCode=DUNNE, description=Stephen's Skin, unitPrice =840
+quantity=100]
+shopper=Customer:
+customerName=Name:
+firstName=Stephen, familyName=Dunne
+customerId=DUNNES0, rewardPoints=4950
+deliveryDate=Date:
+day=8, month=2, year=2018
+cartId=CART1]

@@ -14,6 +14,8 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Random;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -31,7 +33,7 @@ public class CustomerController {
 	private static Cart cart = new Cart();
 	private Date date = new Date();
 	private AvailableProducts ap;
-	private RewardProcessor rp;
+	private RewardProcessor rprocessor;
 	
 	public CustomerController(ShoppingRootPane view, Customer cu) {
 		//initialise model and view fields
@@ -89,7 +91,7 @@ public class CustomerController {
 				AvailableProducts ap = (AvailableProducts)ois.readObject();
 				cart = ap.getCart();
 				cp.updateCartView(cart);
-				rp = ap.getRP();
+				rprocessor = ap.getRP();
 				List<Product> apl = ap.getAP();
 				List<DiscountProduct> adl = ap.getAD();
 				int i;
@@ -117,11 +119,12 @@ public class CustomerController {
 			cname.setFamilyName(lp.getLNameInput());
 			System.out.println(cname.toString());
 			cu.setCustomerName(cname);
-			String idp1 = cu.getCustomerName().getFirstName().substring(0,4);
-			String idp2 = cu.getCustomerName().getFamilyName().substring(0, 4);
-			cu.setCustomerId(idp1+idp2);
+			String idp1 = cu.getCustomerName().getFamilyName().toUpperCase();
+			String idp2 = cu.getCustomerName().getFirstName().substring(0, 1).toUpperCase();
+			cu.setCustomerId(idp1+idp2+"0");
 			System.out.println(cu.toString());
 			mp.changeCustomerIDlbl(cu.getCustomerId());
+			view.enableTabs();
 			view.changeTab(1);
 			}
 	}
@@ -129,13 +132,13 @@ public class CustomerController {
 	private class SubmitCartHandler implements EventHandler<ActionEvent> {
 		public void handle(ActionEvent e) {
 			cart.setDeliveryDate(cp.getDate(date));
-			cu.addRewardPoints(rp.rewardPoints(cart));
+			cu.addRewardPoints(rprocessor.rewardPoints(cart));
 			System.out.println(cart.toString());
 			
 			PrintWriter writer;
 			try {
 				writer = new PrintWriter("src/receipt.txt", "UTF-8");
-				writer.println(cart.toString().replace("]], ", "]]\n").replace(", O", "\nO"));
+				writer.println(cart.toString().replace("], ", "\n").replace("[", "\n"));
 				writer.close();
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
