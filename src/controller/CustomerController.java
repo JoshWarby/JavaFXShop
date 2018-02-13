@@ -138,8 +138,15 @@ public class CustomerController {
 			PrintWriter writer;
 			try {
 				writer = new PrintWriter("src/receipt.txt", "UTF-8");
-				writer.println(cart.toString().replace("], ", "\n").replace("[", "\n"));
+				writer.println(cart.toString().replace("], ", "\n").replace("[", "\n").replace("]", ""));
 				writer.close();
+				File openThis= new File("src/receipt.txt");
+				try {
+					java.awt.Desktop.getDesktop().edit(openThis);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -147,8 +154,9 @@ public class CustomerController {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+			PopUp.display("Cart submited. Receipt created at src/receipt.txt\nPoints have been added to customer and are displayed on receipt.");
 			}
+		
 		}
 	public static void marketPaneCartNo(){
 		mp.setCartSizeLbl(cart);

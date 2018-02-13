@@ -1,22 +1,28 @@
-package model;
+package setupMain;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class TestOS {
+import model.AvailableProducts;
+import model.Cart;
+import model.DiscountProduct;
+import model.Product;
+import model.RewardProcessor;
+
+public class ApplicationSetup {
 
 	public static void main(String[] args) {
 		AvailableProducts ap = new AvailableProducts();
 		Product p = new Product();
-		p.setProductCode("PROD");
-		p.setDescription("Normal Product");
-		p.setUnitPrice(10);
+		p.setProductCode("E1");
+		p.setDescription("Example Product");
+		p.setUnitPrice(100);
 		ap.addAP(p);
 		
 		DiscountProduct d = new DiscountProduct();
-		d.setProductCode("DIS");
-		d.setDescription("Discounted Product");
+		d.setProductCode("E2");
+		d.setDescription("Example Discounted");
 		d.setUnitPrice(100);
 		d.setDiscountRate(0.2);
 		ap.addDP(d);

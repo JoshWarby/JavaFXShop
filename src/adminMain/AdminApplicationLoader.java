@@ -26,7 +26,7 @@ public class AdminApplicationLoader extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		stage.setMinWidth(900); //sets min width and height for the stage window
-		stage.setMinHeight(200);
+		stage.setMinHeight(100);
 		stage.setTitle("Admin Program");
 		stage.setScene(new Scene(view));
 		stage.show();

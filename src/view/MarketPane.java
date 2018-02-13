@@ -1,6 +1,7 @@
 package view;
 
 import model.Cart;
+import javafx.scene.text.TextAlignment;
 import model.DiscountProduct;
 import model.Product;
 import javafx.event.ActionEvent;
@@ -33,7 +34,7 @@ import javafx.scene.image.ImageView;
 
 public class MarketPane extends GridPane{
 	
-	Label customerIDlbl = new Label("---------");
+	Label customerIDlbl = new Label("Cart will be saved upon closure.");
 	//TableView table = new TableView();
 	protected ListView plist = new ListView();
 	protected ListView dlist = new ListView();
@@ -49,6 +50,7 @@ public class MarketPane extends GridPane{
 		this.setAlignment(Pos.CENTER);
 		
 		customerIDlbl.setWrapText(true);
+		customerIDlbl.setTextAlignment(TextAlignment.JUSTIFY);
 		//create labels
 		Label plblTitle = new Label("Products:");
 		this.add(plblTitle, 0, 0);
@@ -140,7 +142,7 @@ public class MarketPane extends GridPane{
 	}
 	
 	public void changeCustomerIDlbl(String idhere){
-		customerIDlbl.setText(""+idhere);
+		customerIDlbl.setText("Cart will be saved upon closure. Customer ID:"+idhere);
 	}
 	
 	public void setCartSizeLbl (Cart cart){

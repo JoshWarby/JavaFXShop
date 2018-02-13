@@ -2,12 +2,16 @@ Cart:
 contents=
 Order:
 item=Product:
-productCode=DUNNE, description=Stephen's Skin, unitPrice =840
-quantity=100]
+productCode=E1, description=Example Product, unitPrice =100
+quantity=7
+Order:
+item=Product:
+productCode=E2, description=Example Discounted, unitPrice =80
+quantity=5
 shopper=Customer:
 customerName=Name:
-firstName=Stephen, familyName=Dunne
-customerId=DUNNES0, rewardPoints=4950
+firstName=Joshjua, familyName=Warburton 
+customerId=WARBURTON J0, rewardPoints=49
 deliveryDate=Date:
-day=8, month=2, year=2018
-cartId=CART1]
+day=16, month=2, year=2018
+cartId=CART1

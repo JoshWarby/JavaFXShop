@@ -28,7 +28,7 @@ public class ApplicationLoader extends Application{
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setMinWidth(900); //sets min width and height for the stage window
+		stage.setMinWidth(100); //sets min width and height for the stage window
 		stage.setMinHeight(200);
 		stage.setTitle("Let's Shop");
 		stage.setScene(new Scene(view));

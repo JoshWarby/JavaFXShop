@@ -30,6 +30,7 @@ public class LoginPane extends GridPane {
 		Label lblFirstName = new Label("First name: ");
 		Label lblSurname = new Label("Last name: ");
 
+
 		//setup text fields
 		txtFirstName = new TextField();
 		txtSurname = new TextField();
