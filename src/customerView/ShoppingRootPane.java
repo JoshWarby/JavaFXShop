@@ -1,4 +1,4 @@
-package view;
+package customerView;
 
 
 import javafx.scene.control.Tab;
@@ -24,9 +24,9 @@ public class ShoppingRootPane extends TabPane{
 
 	
 		//create tabs with panes added
-		t0 = new Tab("Login Pane", lp);
-		t1 = new Tab("Market Pane", mp);
-		t2 = new Tab("Cart Pane", cp);
+		t0 = new Tab("Login", lp);
+		t1 = new Tab("Market", mp);
+		t2 = new Tab("Cart", cp);
 
 		
 		//add tabs to tab pane

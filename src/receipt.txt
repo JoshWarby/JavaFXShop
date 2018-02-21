@@ -2,16 +2,16 @@ Cart:
 contents=
 Order:
 item=Product:
-productCode=E1, description=Example Product, unitPrice =100
-quantity=7
+productCode=asdasd, description=asdasd, unitPrice =23
+quantity=8
 Order:
 item=Product:
-productCode=E2, description=Example Discounted, unitPrice =80
+productCode=sad, description=asdsad, unitPrice =0
 quantity=5
 shopper=Customer:
 customerName=Name:
-firstName=Joshjua, familyName=Warburton 
-customerId=WARBURTON J0, rewardPoints=49
+firstName=ds, familyName=sd
+customerId=SDD0, rewardPoints=0
 deliveryDate=Date:
-day=16, month=2, year=2018
+day=24, month=2, year=2018
 cartId=CART1

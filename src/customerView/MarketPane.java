@@ -1,4 +1,4 @@
-package view;
+package customerView;
 
 import model.Cart;
 import javafx.scene.text.TextAlignment;
@@ -34,10 +34,10 @@ import javafx.scene.image.ImageView;
 
 public class MarketPane extends GridPane{
 	
-	Label customerIDlbl = new Label("Cart will be saved upon closure.");
+	private Label customerIDlbl = new Label("Cart will be saved upon closure.");
 	//TableView table = new TableView();
-	protected ListView plist = new ListView();
-	protected ListView dlist = new ListView();
+	private ListView plist = new ListView();
+	private ListView dlist = new ListView();
     private Button btnAddCart = new Button("Add to Cart");
     private Label lblInCartNo = new Label("Item's in cart: 0");
 	

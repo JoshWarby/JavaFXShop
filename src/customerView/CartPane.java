@@ -1,4 +1,4 @@
-package view;
+package customerView;
 
 import model.Cart;
 import model.Date;

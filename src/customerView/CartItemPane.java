@@ -1,10 +1,11 @@
-package view;
+package customerView;
 
 import java.util.Observable;
 import java.util.Observer;
+
+import customerController.CustomerController;
 import model.Cart;
 import model.Order;
-import controller.CustomerController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -73,14 +74,13 @@ public class CartItemPane extends HBox implements Observer {
 
 	}
 
-
-	
-	public void hideAll(){
+	private void hideAll(){
 		this.getChildren().remove(0, this.getChildren().size());
 		numberField.setText("Removed");
 		this.getChildren().add(numberField);
 		
 	}
+	
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub

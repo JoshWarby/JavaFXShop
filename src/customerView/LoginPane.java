@@ -1,4 +1,4 @@
-package view;
+package customerView;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

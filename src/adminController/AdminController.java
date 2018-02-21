@@ -18,7 +18,6 @@ public class AdminController {
 	//fields to be used throughout the class
 	private AdminRootPane view;
 	private ProductsPane pp;
-	private Customer cu;
 	private DiscountsPane dp;
 	private AvailableProducts ap;
 	private RewardProcessor rprocessor;

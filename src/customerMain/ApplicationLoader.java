@@ -1,27 +1,26 @@
-package main;
+package customerMain;
 
 import java.io.File;
 import java.util.Scanner;
 
-import controller.CustomerController;
-
+import customerController.CustomerController;
+import customerView.ShoppingRootPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.*;
-import view.*;
 
 
 public class ApplicationLoader extends Application{
 
 	private ShoppingRootPane view;
+	private Customer cu;
 	private CustomerController cc;
-
 
 	@Override
 	public void init() {
 		//create model and view and pass their references to the controller
-		Customer cu = new Customer();
+		cu = new Customer();
 		view = new ShoppingRootPane();
 		cc = new CustomerController(view, cu);
 	}

@@ -1,7 +1,7 @@
-package controller;
+package customerController;
 
 import model.*;
-import view.*;
+import customerView.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +16,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Random;
 
+import customerView.CartPane;
+import customerView.LoginPane;
+import customerView.MarketPane;
+import customerView.PopUp;
+import customerView.ShoppingRootPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -88,7 +93,7 @@ public class CustomerController {
 	    	  FileInputStream fis = new FileInputStream("src/o.tmp");
 	  	      ObjectInputStream ois = new ObjectInputStream(fis);
 	  	    try {
-				AvailableProducts ap = (AvailableProducts)ois.readObject();
+				ap = (AvailableProducts)ois.readObject();
 				cart = ap.getCart();
 				cp.updateCartView(cart);
 				rprocessor = ap.getRP();
