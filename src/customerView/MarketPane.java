@@ -76,7 +76,7 @@ public class MarketPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getDescription()+", PRICE: "+ item.getUnitPrice() ; // get text from item
+		            String text = item.getDescription()+", PRICE: "+ item.getUnitPrice()+"p" ; // get text from item
 		            setText(text);
 		        }
 		    }
@@ -97,7 +97,7 @@ public class MarketPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getDescription()+", PRICE: "+ item.getUnitPrice()+"(-"+item.getDiscountRate()*100+"%)" ; // get text from item
+		            String text = item.getDescription()+", PRICE: "+ item.getUnitPrice()+"p(-"+item.getDiscountRate()*100+"%)" ; // get text from item
 		            setText(text);
 		        }
 		    }
@@ -111,11 +111,18 @@ public class MarketPane extends GridPane{
 		this.add(dlist,1,1);
 	}
 	
-	//method to attach the add button handler
+	/**
+	 * Attatches the handl;er to the "Add to Cart" button.
+	 * @param handler
+	 */
 	public void addToCartHandler(EventHandler<ActionEvent> handler) {
 			btnAddCart.setOnAction(handler);
 		}
 	
+	/**
+	 * This method returns the item on either ListView
+	 * @return the Product that the user has selected.
+	 */
 	public Product getSelectedItem(){
 		if (plist.getSelectionModel().getSelectedIndex()>=0){
 			return (Product) plist.getSelectionModel().getSelectedItem();
@@ -133,18 +140,33 @@ public class MarketPane extends GridPane{
 		}
 
 	}
-	
+	/**
+	 * Adds a product to the list of products.
+	 * @param p the product to be added to the list.
+	 */
 	public void addProductToPList (Product p){
 		plist.getItems().add(p);
 	}
+	/**
+	 * Add a discounted product to the list of discounted products.
+	 * @param d the discounted product to be added to its list.
+	 */
 	public void addProductToDList (DiscountProduct d){
 		dlist.getItems().add(d);
 	}
 	
+	/**
+	 * This method displays the customer ID on the market pane.
+	 * @param idhere the customer ID using the application.
+	 */
 	public void changeCustomerIDlbl(String idhere){
 		customerIDlbl.setText("Cart will be saved upon closure. Customer ID:"+idhere);
 	}
 	
+	/**
+	 * This method changes the counter of number of items in the cart.
+	 * @param cart the cart that the user is using.
+	 */
 	public void setCartSizeLbl (Cart cart){
 		lblInCartNo.setText("Items in Cart: "+cart.numberOfOrders());
 

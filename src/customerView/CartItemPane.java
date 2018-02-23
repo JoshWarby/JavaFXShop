@@ -1,5 +1,6 @@
 package customerView;
 
+import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -27,14 +28,14 @@ public class CartItemPane extends HBox implements Observer {
 	private Button plusBtn, minusBtn;
 	private Label numberField;
 	private Label nameField;
-
+	private DecimalFormat df=new DecimalFormat("0.00");
 	public CartItemPane(Order order, Cart cart,Label totalCost) {
 		//set the style for this pane 
 		//this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		//this.getStyleClass().add("counter-pane");
 
 		String itemName = order.getProduct().getDescription();
-		totalCost.setText("Total Cost £"+Integer.toString(cart.getTotalCost()));
+		totalCost.setText("Total Cost £"+df.format(((double)cart.getTotalCost()/100)));
 		
 		nameField = new Label(itemName+"  ");
 		// ------------Number Field-----------------------
@@ -47,7 +48,7 @@ public class CartItemPane extends HBox implements Observer {
             public void handle(ActionEvent event) {
                 order.increaseQuantity();
                 numberField.setText("  "+Integer.toString(order.getQuantity())+"  ");
-                totalCost.setText("Total Cost £"+Integer.toString(cart.getTotalCost()));
+                totalCost.setText("Total Cost £"+df.format(((double)cart.getTotalCost()/100)));
             }
             
         });
@@ -58,12 +59,12 @@ public class CartItemPane extends HBox implements Observer {
             @Override
             public void handle(ActionEvent event) {
                 order.decreaseQuantity();
-                numberField.setText("  "+Integer.toString(order.getQuantity())+"  ");;
+                numberField.setText("  "+Double.toString(order.getQuantity())+"  ");;
                 if (order.getQuantity() == 0){
                 	cart.removeOrder(order);
                 	hideAll();
                 }
-                totalCost.setText("Total Cost £"+Integer.toString(cart.getTotalCost()));
+                totalCost.setText("Total Cost £"+df.format(((double)cart.getTotalCost()/100)));
                 CustomerController.marketPaneCartNo();
             }
         });
@@ -74,6 +75,9 @@ public class CartItemPane extends HBox implements Observer {
 
 	}
 
+	/**
+	 * This method deletes the product from the cart pane leaving only the message "Removed"
+	 */
 	private void hideAll(){
 		this.getChildren().remove(0, this.getChildren().size());
 		numberField.setText("Removed");

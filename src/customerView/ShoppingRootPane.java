@@ -38,24 +38,42 @@ public class ShoppingRootPane extends TabPane{
 		
 	}
 	
-	
+	/**
+	 * Returns the current market pane.
+	 * @return the market pane
+	 */
 	public MarketPane getMarketPane() {
 		return mp;
 	}
 
+	/**
+	 * Returns the cart pane.
+	 * @return the cart pane.
+	 */
 	public CartPane getCartPane() {
 		return cp;
 	}
 	
+	/**
+	 * Returns the login pane.
+	 * @return the login pane.
+	 */
 	public LoginPane getLoginPane() {
 		return lp;
 	}
 	
+	/**
+	 * This method enables the remaining tabs after the user enters their details on the login pane.
+	 */
 	public void enableTabs(){
 		t1.setDisable(false);
 		t2.setDisable(false);
 	}
 	
+	/**
+	 * This method changes the current tab the user is on.
+	 * @param index of the tab to change to.
+	 */
 	public void changeTab(int index) {
 		this.getSelectionModel().select(index);
 	}

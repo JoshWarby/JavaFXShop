@@ -43,7 +43,10 @@ public class CartPane extends GridPane{
 		this.add(datePicker, 1, 3);
 		
 	}
-
+/**
+ * This method updates what items are visually in the users cart on the cart tab.
+ * @param cart the current cart the user is working with.
+ */
 	public void updateCartView(Cart cart){
 		int i;
 		
@@ -59,10 +62,19 @@ public class CartPane extends GridPane{
 			this.add(cartObjects.get(i),0,i+1);
 			}
 		}
+	/**
+	 * This method attaches the handler to the "Buy Now" button.
+	 * @param handler
+	 */
 	public void addBuyNowHandler(EventHandler<ActionEvent> handler) {
 		btnBuyNow.setOnAction(handler);
 	}
 	
+	/**
+	 * 
+	 * @param date the date that is selected on the DatePicker object.
+	 * @return the date in the form of the given model class "date".
+	 */
 	public Date getDate(Date date){
 		date.setDay(datePicker.getValue().getDayOfMonth());
 		date.setMonth(datePicker.getValue().getMonthValue());

@@ -30,19 +30,34 @@ public class AdminRootPane extends TabPane{
 		
 	}
 	
+	/**
+	 * Returns the product pane.
+	 * @return the product pane.
+	 */
 	public ProductsPane getProductsPane() {
 		return pp;
 	}
 	
+	/**
+	 * Returns the discounts pane.
+	 * @return the discount pane.
+	 */
 	public DiscountsPane getDiscountsPane() {
 		return dp;
 	}
 	
+	/**
+	 * Returns the rewards pane.
+	 * @return the reward pane.
+	 */
 	public RewardsPane getRewardsPane() {
 		return rp;
 	}
 
-	
+	/**
+	 * This method changes the current tab the user is on.
+	 * @param index of the tab to change to.
+	 */
 	public void changeTab(int index) {
 		this.getSelectionModel().select(index);
 	}

@@ -32,8 +32,8 @@ import model.Product;
 
 public class ProductsPane extends GridPane{
 
-	protected ListView plist = new ListView();
-	protected ListView dlist = new ListView();
+	private ListView plist = new ListView();
+	private ListView dlist = new ListView();
     private Button btnAddProduct = new Button("Add Product");
     private Button btnRemoveProduct = new Button("Remove (Product ID)");
     private TextField txtID, txtDesc, txtPrice;
@@ -74,7 +74,7 @@ public class ProductsPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice() ; // get text from item
+		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice()+"p" ; // get text from item
 		            setText(text);
 		        }
 		    }
@@ -94,7 +94,7 @@ public class ProductsPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice()+"(-"+item.getDiscountRate()*100+"%)" ; // get text from item
+		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice()+"p(-"+item.getDiscountRate()*100+"%)" ; // get text from item
 		            setText(text);
 		        }
 		    }
@@ -112,23 +112,10 @@ public class ProductsPane extends GridPane{
 				
 	}
 	
-	public Product getSelectedItem(){
-		if (plist.getSelectionModel().getSelectedIndex()>=0){
-			return (Product) plist.getSelectionModel().getSelectedItem();
-		}
-		else if (dlist.getSelectionModel().getSelectedIndex()>=0){
-			DiscountProduct dp = (DiscountProduct) dlist.getSelectionModel().getSelectedItem();
-			Product returnp = new Product();
-			returnp.setDescription(dp.getDescription());
-			returnp.setProductCode(dp.getProductCode());
-			returnp.setUnitPrice(dp.getUnitPrice());
-			return returnp;
-		}
-		else{
-			return null;
-		}
-
-	}
+	/**
+	 * Returns the entered product.
+	 * @return the product entered by the user.
+	 */
 	public Product returnEnteredP(){
 		Product entered = new Product();
 		entered.setDescription(txtDesc.getText());
@@ -136,27 +123,52 @@ public class ProductsPane extends GridPane{
 		entered.setUnitPrice(Integer.parseInt(txtPrice.getText()));
 		return entered;
 	}
+	
+	/**
+	 * Returns the entered product code.
+	 * @return the product code entered by the user.
+	 */
 	public String getEnteredPCode(){
 		return txtID.getText();
 	}
 	
+	/**
+	 * This method clears all products from both list, so they can be re-populated.
+	 */
 	public void clearProducts(){
 		plist.getItems().clear();
 		dlist.getItems().clear();
 	}
 	
+	/**
+	 * This method adds a product to the product list.
+	 * @param p the product to add to the product list.
+	 */
 	public void addProductToPList (Product p){
 		plist.getItems().add(p);
 	}
+	
+	/**
+	 * This method adds a discounted product to the discounts list.
+	 * @param d the discounted product to be added to the discounts list.
+	 */
 	public void addProductToDList (DiscountProduct d){
 		dlist.getItems().add(d);
 	}
 
+	/**
+	 * This method attaches the handler to the "Add" button.
+	 * @param handler
+	 */
 	public void addAddHandler(EventHandler<ActionEvent> handler) {
 		btnAddProduct.setOnAction(handler);
 		
 	}
 
+	/**
+	 * THis method attaches the handler to the "Remove" button.
+	 * @param handler
+	 */
 	public void addRemoveHandler(EventHandler<ActionEvent> handler) {
 		btnRemoveProduct.setOnAction(handler);
 		

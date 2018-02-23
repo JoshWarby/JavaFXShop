@@ -38,6 +38,10 @@ public class AdminController {
 		grabInfo();
 		
 	}
+	
+	/**
+	 * This method attaches buttons to their respective handlers.
+	 */
 	private void attachEventHandlers() {
 		pp.addAddHandler(new AddSubmitHandler()); //attaches add button handler
 		pp.addRemoveHandler(new RemoveSubmitHandler()); //attaches add button handler
@@ -45,9 +49,15 @@ public class AdminController {
 		rp.addAddRewardHandler(new RewardAddHandler());
 		rp.addRemoveRewardHandler(new RewardRemoveHandler());
 	}
+	
+	/**
+	 * 
+	 * @author Josh
+	 *Adds handler to "Submit" button.
+	 */
 	private class AddSubmitHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e1) {
-			System.out.println(ap.getAP().toString());
+			//System.out.println(ap.getAP().toString());
 			ap.addAP(pp.returnEnteredP());
 			try {
 		    	FileOutputStream fos = new FileOutputStream("src/o.tmp");
@@ -59,11 +69,16 @@ public class AdminController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("added");
+			//System.out.println("added");
 			grabInfo();
 		}
 	}
 	
+	/**
+	 * 
+	 * @author Josh
+	 *Adds handler to the reward "Add" button.
+	 */
 	private class RewardAddHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e1) {
 			Product toreward = new Product();
@@ -86,15 +101,27 @@ public class AdminController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("this"+rprocessor.toString());
+			//System.out.println("this"+rprocessor.toString());
 			grabInfo();
 		}
 	}
+	
+	/**
+	 * 
+	 * @author Josh
+	 * Placeholder to potential "Remove" button on reward pane.
+	 */
 	private class RewardRemoveHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e1) {
-			System.out.println("y");
+			//System.out.println("y");
 		}
 	}
+	
+	/**
+	 * 
+	 * @author Josh
+	 *Attaches handler to "Remove" button.
+	 */
 	private class RemoveSubmitHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {
 			try {
@@ -105,7 +132,7 @@ public class AdminController {
 					rprocessor = ap.getRP();
 					apl = ap.getAP();
 					adl = ap.getAD();
-					System.out.println(apl.toString());
+					//System.out.println(apl.toString());
 					int i;
 					for (i=0;i<apl.size();i++){
 						if (apl.get(i).getProductCode().equals(pp.getEnteredPCode())){
@@ -141,10 +168,16 @@ public class AdminController {
 				e1.printStackTrace();
 			}
 			
-			System.out.println("removed");
+			//System.out.println("removed");
 			grabInfo();
 		}
 	}
+	
+	/**
+	 * 
+	 * @author Josh
+	 *Attaches event handler to discount "Submit" button.
+	 */
 	private class DiscountSubmitHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {
 			try {
@@ -155,7 +188,7 @@ public class AdminController {
 					rprocessor = ap.getRP();
 					apl = ap.getAP();
 					adl = ap.getAD();
-					System.out.println(apl.toString());
+					//System.out.println(apl.toString());
 					int i;
 					for (i=0;i<apl.size();i++){
 						if (apl.get(i).getProductCode().equals(dp.getEnteredPCode())){
@@ -171,7 +204,7 @@ public class AdminController {
 					for (i=0;i<adl.size();i++){
 						if (adl.get(i).getProductCode().equals(dp.getEnteredPCode())){
 							if (dp.getEnteredDRate() == 0){
-								System.out.println("is0");
+								//System.out.println("is0");
 								toproduct = new Product();
 								toproduct.setDescription(adl.get(i).getDescription());
 								toproduct.setProductCode(adl.get(i).getProductCode());
@@ -209,11 +242,14 @@ public class AdminController {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			System.out.println("Discounted");
+			//System.out.println("Discounted");
 			grabInfo();
 		}
 	}
 	
+	/**
+	 * This method gets information on products, discounted products and rewarded products from o.tmp, and displays them.
+	 */
 	private void grabInfo(){
 
 		dp.clearProducts();
@@ -229,12 +265,11 @@ public class AdminController {
 				apl = ap.getAP();
 				adl = ap.getAD();
 				
-				int i;
 				for (Product tmpP : apl){
 					pp.addProductToPList(tmpP);
 					dp.addProductToPList(tmpP);
 					if (rprocessor.getSet().contains(tmpP)){
-						System.out.println("FOUND");
+						//System.out.println("FOUND");
 						rp.addProduct(tmpP);
 				}
 				}
@@ -249,14 +284,14 @@ public class AdminController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	  	    System.out.println(ap.getAD().toString());
+	  	    //System.out.println(ap.getAD().toString());
 			ois.close();
 			fis.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(ap.getAP().toString());
+		//System.out.println(ap.getAP().toString());
 
 	}
 	

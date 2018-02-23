@@ -9,7 +9,10 @@ import javafx.stage.*;
 
 public class PopUp {
    
-    
+/**
+ * Displays the pop-up.
+ * @param lbl the text the label on the pop-up should display.
+ */
 public static void display(String lbl)
 {
 	Stage popupwindow=new Stage();

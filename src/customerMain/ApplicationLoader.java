@@ -25,9 +25,13 @@ public class ApplicationLoader extends Application{
 		cc = new CustomerController(view, cu);
 	}
 
+	/**
+	 * Starts the GUI
+	 * @param Stage The stage of which every page will be shown upon.
+	 */
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setMinWidth(100); //sets min width and height for the stage window
+		stage.setMinWidth(900); //sets min width and height for the stage window
 		stage.setMinHeight(200);
 		stage.setTitle("Let's Shop");
 		stage.setScene(new Scene(view));
@@ -39,9 +43,12 @@ public class ApplicationLoader extends Application{
 		launch(args);
 	}
 	
+	/**
+	 * This method calls the method that handles saving the program upon the user closing the program.
+	 */
 	@Override
 	public void stop(){
-	    System.out.println("Stage is closing");
+	    //System.out.println("Stage is closing");
 	    cc.uponClose();
 	}
 }

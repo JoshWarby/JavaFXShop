@@ -53,16 +53,24 @@ public class CustomerController {
 		//attach event handlers to view using private helper method
 		this.attachEventHandlers();	
 	}
+	/**
+	 * This method attaches buttons to their respective handlers.
+	 */
 	private void attachEventHandlers() {
 		lp.addSubmitHandler(new LoginSubmitHandler()); //attaches login button handler
 		mp.addToCartHandler(new AddToCartHandler());
 		cp.addBuyNowHandler(new SubmitCartHandler());
 	}
 	
+	/**
+	 * 
+	 * @author Josh
+	 * This handler handles when the "Add to Cart" button is clicked.
+	 */
 	private class AddToCartHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {
 			boolean cont = true;
-			System.out.println(mp.getSelectedItem());
+			//System.out.println(mp.getSelectedItem());
 			Product selectedProduct = new Product();
 			selectedProduct = mp.getSelectedItem();
 			
@@ -88,6 +96,9 @@ public class CustomerController {
 			}
 	}		
 	
+	/**
+	 * Opens the o.tmp file to read the saved cart, rewarded products, products and discounted products.
+	 */
 	private void grabInfo(){
 		try {
 	    	  FileInputStream fis = new FileInputStream("src/o.tmp");
@@ -116,29 +127,40 @@ public class CustomerController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		mp.setCartSizeLbl(cart);
 	}
 	
+	/**
+	 * 
+	 * @author Josh
+	 *This handler handles what happends once the login button has been clicked.
+	 */
 	private class LoginSubmitHandler implements EventHandler<ActionEvent> {
 		public void handle(ActionEvent e) {
 			cname.setFirstName(lp.getFNameInput());
 			cname.setFamilyName(lp.getLNameInput());
-			System.out.println(cname.toString());
+			//System.out.println(cname.toString());
 			cu.setCustomerName(cname);
 			String idp1 = cu.getCustomerName().getFamilyName().toUpperCase();
 			String idp2 = cu.getCustomerName().getFirstName().substring(0, 1).toUpperCase();
 			cu.setCustomerId(idp1+idp2+"0");
-			System.out.println(cu.toString());
+			//System.out.println(cu.toString());
 			mp.changeCustomerIDlbl(cu.getCustomerId());
 			view.enableTabs();
 			view.changeTab(1);
 			}
 	}
 	
+	/**
+	 * 
+	 * @author Josh
+	 *This handler handles what happens when the cart is submitted. The points are added to the user and the recepit is printer.
+	 */
 	private class SubmitCartHandler implements EventHandler<ActionEvent> {
 		public void handle(ActionEvent e) {
 			cart.setDeliveryDate(cp.getDate(date));
 			cu.addRewardPoints(rprocessor.rewardPoints(cart));
-			System.out.println(cart.toString());
+			//System.out.println(cart.toString());
 			
 			PrintWriter writer;
 			try {
@@ -163,9 +185,16 @@ public class CustomerController {
 			}
 		
 		}
+	/**
+	 * This method updates the size of the cart on the market pane.
+	 */
 	public static void marketPaneCartNo(){
 		mp.setCartSizeLbl(cart);
 	}
+	
+	/**
+	 * This method saves the cart upon the user exiting the program
+	 */
 	public void uponClose(){
 		AvailableProducts ap = new AvailableProducts();
 	try {

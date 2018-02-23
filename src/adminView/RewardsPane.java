@@ -19,7 +19,7 @@ public class RewardsPane extends GridPane{
 	private Button btnremoveID = new Button("Remove from scheme");
 	
 	@SuppressWarnings("rawtypes")
-	ListView plist = new ListView();	
+	private ListView plist = new ListView();	
 	@SuppressWarnings("unchecked")
 	public RewardsPane() {
 	this.setPadding(new Insets(80, 80, 80, 80));
@@ -51,20 +51,44 @@ public class RewardsPane extends GridPane{
 	
 	
 }
+	
+	/**
+	 * Returns the product code entered by user.
+	 * @return product code entered by user.
+	 */
 	public String getEnteredPCode(){
 		return txtID.getText();
 		}
+	
+	/**
+	 * Adds handler to "Add Button"
+	 * @param handler
+	 */
 	public void addAddRewardHandler(EventHandler<ActionEvent> handler) {
 		btnaddID.setOnAction(handler);
 		
 	}
+	
+	/** Placeholder for adding a handler to the remove button.
+	 * 
+	 * @param handler
+	 */
 	public void addRemoveRewardHandler(EventHandler<ActionEvent> handler) {
 		btnremoveID.setOnAction(handler);
 		
 	}
+	
+	/**
+	 * Method adds product to list, these products are the products that are part of the reward scheme.
+	 * @param p reward scheme product.
+	 */
 	public void addProduct(Product p){
 		plist.getItems().add(p);
 	}
+	
+	/**
+	 * This method clears the list, so it can be repopulated.
+	 */
 	public void clearProducts() {
 		plist.getItems().clear();
 		

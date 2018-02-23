@@ -22,7 +22,11 @@ public class AdminApplicationLoader extends Application{
 		view = new AdminRootPane();
 		ac = new AdminController(view);
 	}
-
+	
+	/**
+	 * Starts the GUI
+	 * @param Stage The stage of which every page will be shown upon.
+	 */
 	@Override
 	public void start(Stage stage) throws Exception {
 		stage.setMinWidth(900); //sets min width and height for the stage window

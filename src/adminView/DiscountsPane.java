@@ -17,11 +17,12 @@ import javafx.scene.layout.GridPane;
 
 public class DiscountsPane extends GridPane{
 
-	protected ListView plist = new ListView();
-	protected ListView dlist = new ListView();
+	private ListView plist = new ListView();
+	private ListView dlist = new ListView();
     private Button btnChangeDiscount = new Button("Change Discount");
     private TextField txtID, txtDiscount;
 	
+	@SuppressWarnings("unchecked")
 	public DiscountsPane (){
 		//styling
 		this.setPadding(new Insets(80, 80, 80, 80));
@@ -53,7 +54,7 @@ public class DiscountsPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice() ; // get text from item
+		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice()+"p" ; // get text from item
 		            setText(text);
 		        }
 		    }
@@ -73,7 +74,7 @@ public class DiscountsPane extends GridPane{
 		        if (empty) {
 		            setText(null);
 		        } else {
-		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice()+"(-"+item.getDiscountRate()*100+"%)" ; // get text from item
+		            String text = item.getProductCode()+" : "+item.getDescription()+", PRICE: "+ item.getUnitPrice()+"p(-"+item.getDiscountRate()*100+"%)" ; // get text from item
 		            setText(text);
 		        }
 		    }
@@ -91,32 +92,26 @@ public class DiscountsPane extends GridPane{
 				
 	}
 	
-	public Product getSelectedItem(){
-		if (plist.getSelectionModel().getSelectedIndex()>=0){
-			return (Product) plist.getSelectionModel().getSelectedItem();
-		}
-		else if (dlist.getSelectionModel().getSelectedIndex()>=0){
-			DiscountProduct dp = (DiscountProduct) dlist.getSelectionModel().getSelectedItem();
-			Product returnp = new Product();
-			returnp.setDescription(dp.getDescription());
-			returnp.setProductCode(dp.getProductCode());
-			returnp.setUnitPrice(dp.getUnitPrice());
-			return returnp;
-		}
-		else{
-			return null;
-		}
-
-	}
-	
+	/**
+	 * This method clears the products from both lists, this allows them to be re-populated.
+	 */
 	public void clearProducts(){
 		plist.getItems().clear();
 		dlist.getItems().clear();
 	}
 	
+	/**
+	 * This method returns the product code entered by the user.
+	 * @return the product code.
+	 */
 	public String getEnteredPCode(){
 		return txtID.getText();
 	}
+	
+	/**
+	 * This method returns the entered discount rate, as a percentage.
+	 * @return returns the entered discount rate.
+	 */
 	public double getEnteredDRate(){
 		double rate;
 		String enteredpercentage = txtDiscount.getText();
@@ -124,15 +119,26 @@ public class DiscountsPane extends GridPane{
 		return rate;
 	}
 	
-	
-	
+	/**
+	 * This method adds a product to the products list.
+	 * @param p the product to add.
+	 */
 	public void addProductToPList (Product p){
 		plist.getItems().add(p);
 	}
+	
+	/**
+	 * This method adds a discounted product to the discounts list.
+	 * @param d the discounted products to add.
+	 */
 	public void addProductToDList (DiscountProduct d){
 		dlist.getItems().add(d);
 	}
 
+	/**
+	 * This method adds the handler to the "Add Discount" button.
+	 * @param handler
+	 */
 	public void addDiscountHandler(EventHandler<ActionEvent> handler) {
 		btnChangeDiscount.setOnAction(handler);
 		

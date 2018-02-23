@@ -51,11 +51,18 @@ public class LoginPane extends GridPane {
 		this.add(btnPlay, 1, 3);
 	}
 	
-	
+	/**
+	 * Returns the first name submitted by the user.
+	 * @return the String of the first name the user submitted.
+	 */
 	public String getFNameInput() {
 		return txtFirstName.getText();
 	}
 	
+	/**
+	 * Returns the surname submitted by the user.
+	 * @return the String og the surname the user submitted.
+	 */
 	public String getLNameInput() {
 		return txtSurname.getText();
 	}
