@@ -10,6 +10,11 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * This class is the runnable class for the admin program.
+ * @author Josh
+ *
+ */
 public class AdminApplicationLoader extends Application{
 
 	private AdminRootPane view;

@@ -2,12 +2,12 @@ Cart:
 contents=
 Order:
 item=Product:
-productCode=E2, description=Example Discounted, unitPrice =80
-quantity=9
+productCode=E1, description=Example Product, unitPrice =100
+quantity=11
 shopper=Customer:
 customerName=Name:
-firstName=sdsd, familyName=sdsd
-customerId=SDSDS0, rewardPoints=0
+firstName=sd, familyName=sd
+customerId=SDS0, rewardPoints=44
 deliveryDate=Date:
-day=2, month=3, year=2018
+day=15, month=3, year=2018
 cartId=CART1

@@ -10,7 +10,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.*;
 
-
+/**
+ * This is the runnable class for the customers application.
+ * @author Josh
+ *
+ */
 public class ApplicationLoader extends Application{
 
 	private ShoppingRootPane view;

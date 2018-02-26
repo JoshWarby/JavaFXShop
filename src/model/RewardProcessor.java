@@ -8,7 +8,7 @@ import java.util.Set;
  * A reward processor holds a set of products that are entitled
  * to receive reward points and can process a given cart to achieve this.
  * 
- * @author la and jw
+ * @author la and Josh
  */
 public class RewardProcessor implements Serializable{
 

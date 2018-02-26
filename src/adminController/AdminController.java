@@ -13,6 +13,11 @@ import adminView.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/**
+ * This class is used as the controller for the admin application.
+ * @author Josh
+ *
+ */
 public class AdminController {
 	
 	//fields to be used throughout the class
@@ -51,9 +56,9 @@ public class AdminController {
 	}
 	
 	/**
-	 * 
+	 * Adds handler to "Submit" button.
 	 * @author Josh
-	 *Adds handler to "Submit" button.
+	 *
 	 */
 	private class AddSubmitHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e1) {
@@ -75,9 +80,9 @@ public class AdminController {
 	}
 	
 	/**
-	 * 
+	 * Adds handler to the reward "Add" button.
 	 * @author Josh
-	 *Adds handler to the reward "Add" button.
+	 *
 	 */
 	private class RewardAddHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e1) {
@@ -107,9 +112,9 @@ public class AdminController {
 	}
 	
 	/**
-	 * 
-	 * @author Josh
 	 * Placeholder to potential "Remove" button on reward pane.
+	 * @author Josh
+	 * 
 	 */
 	private class RewardRemoveHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e1) {
@@ -118,9 +123,9 @@ public class AdminController {
 	}
 	
 	/**
-	 * 
+	 * Attaches handler to "Remove" button.
 	 * @author Josh
-	 *Attaches handler to "Remove" button.
+	 *
 	 */
 	private class RemoveSubmitHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {
@@ -174,9 +179,9 @@ public class AdminController {
 	}
 	
 	/**
-	 * 
+	 * Attaches event handler to discount "Submit" button.
 	 * @author Josh
-	 *Attaches event handler to discount "Submit" button.
+	 *
 	 */
 	private class DiscountSubmitHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {

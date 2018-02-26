@@ -30,6 +30,11 @@ import model.DiscountProduct;
 import model.Order;
 import model.Product;
 
+/**
+ * This is the produts pane shown on the admin root pane.
+ * @author Josh
+ *
+ */
 public class ProductsPane extends GridPane{
 
 	private ListView plist = new ListView();

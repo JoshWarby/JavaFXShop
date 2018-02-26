@@ -6,7 +6,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.*;
 
-
+/**
+ * This class creates a pop up window informing the user of a given message.
+ * @author Josh
+ *
+ */
 public class PopUp {
    
 /**

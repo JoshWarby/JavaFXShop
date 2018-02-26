@@ -15,6 +15,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
+/**
+ * This pane displays the products the user has added to the cart and lets them add a delivery date and submit the cart.
+ * @author Josh
+ *
+ */
 public class CartPane extends GridPane{
 	private ArrayList<CartItemPane> cartObjects = new ArrayList<>();
 	

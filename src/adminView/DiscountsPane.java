@@ -14,7 +14,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-
+/**
+ * This is the discounts pane shown on the admin root pane.
+ * @author Josh
+ *
+ */
 public class DiscountsPane extends GridPane{
 
 	private ListView plist = new ListView();

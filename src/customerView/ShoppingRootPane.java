@@ -4,6 +4,11 @@ package customerView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 
+/**
+ * This is the root pane for the customer, it displays all other panes.
+ * @author Josh
+ *
+ */
 public class ShoppingRootPane extends TabPane{
 
 	private MarketPane mp;

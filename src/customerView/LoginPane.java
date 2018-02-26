@@ -12,6 +12,11 @@ import javafx.scene.layout.HBox;
 
 //import model.Player;
 
+/**
+ * This pane takes the users first and last name before allowing them to proceed into the customer application.
+ * @author Josh
+ *
+ */
 public class LoginPane extends GridPane {
 
 //	private ComboBox<Player> cboOpponent;

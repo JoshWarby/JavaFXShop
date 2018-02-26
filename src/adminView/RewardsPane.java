@@ -12,6 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import model.Product;
 
+/**
+ * This is the rewards pane shown on the admin root pane.
+ * @author Josh
+ *
+ */
 public class RewardsPane extends GridPane{
 
 	private TextField txtID = new TextField();

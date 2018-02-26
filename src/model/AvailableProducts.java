@@ -4,6 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is used to create the object file that is used to transfer available product data from the admin program to the customer program.
+ * It is also used to save the current cart, however this was implemented late into development so the name was not changed to reflect this.
+ * @author Josh
+ *
+ */
 public class AvailableProducts implements Serializable{
 	private List<Product> AvailableProducts;
 	private List<DiscountProduct> AvailableDiscounted;

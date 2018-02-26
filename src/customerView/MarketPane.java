@@ -31,7 +31,11 @@ import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
+/**
+ * This pane displays what products and discounted products are available for the customer to add top their cart.
+ * @author Josh
+ *
+ */
 public class MarketPane extends GridPane{
 	
 	private Label customerIDlbl = new Label("Cart will be saved upon closure.");

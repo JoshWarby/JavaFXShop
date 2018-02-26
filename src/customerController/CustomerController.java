@@ -13,19 +13,18 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Random;
-
-import customerView.CartPane;
-import customerView.LoginPane;
-import customerView.MarketPane;
-import customerView.PopUp;
 import customerView.ShoppingRootPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 
-
+/**
+ * This is the customers application controller.
+ * @author Josh
+ *
+ */
 public class CustomerController {
 
 	//fields to be used throughout the class
@@ -63,9 +62,9 @@ public class CustomerController {
 	}
 	
 	/**
-	 * 
-	 * @author Josh
 	 * This handler handles when the "Add to Cart" button is clicked.
+	 * @author Josh
+	 * 
 	 */
 	private class AddToCartHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent e) {
@@ -89,7 +88,6 @@ public class CustomerController {
 				cart.addOrder(productOrder);
 				cart.setCartId("CART1");
 				cart.setShopper(cu);
-				//cart.setDeliveryDate(deliveryDate);
 				cp.updateCartView(cart);
 				marketPaneCartNo();
 				}
@@ -97,7 +95,7 @@ public class CustomerController {
 	}		
 	
 	/**
-	 * Opens the o.tmp file to read the saved cart, rewarded products, products and discounted products.
+	 *  This method opens the o.tmp file to read the saved cart, rewarded products, products and discounted products.
 	 */
 	private void grabInfo(){
 		try {
@@ -110,7 +108,6 @@ public class CustomerController {
 				rprocessor = ap.getRP();
 				List<Product> apl = ap.getAP();
 				List<DiscountProduct> adl = ap.getAD();
-				int i;
 				for (Product tmpP : apl){
 					mp.addProductToPList(tmpP);
 				}
@@ -131,9 +128,9 @@ public class CustomerController {
 	}
 	
 	/**
-	 * 
+	 * This handler handles what happens once the login button has been clicked.
 	 * @author Josh
-	 *This handler handles what happends once the login button has been clicked.
+	 *
 	 */
 	private class LoginSubmitHandler implements EventHandler<ActionEvent> {
 		public void handle(ActionEvent e) {
@@ -152,38 +149,43 @@ public class CustomerController {
 	}
 	
 	/**
-	 * 
+	 * This handler handles what happens when the cart is submitted. The points are added to the user and the receipt is printer.
 	 * @author Josh
-	 *This handler handles what happens when the cart is submitted. The points are added to the user and the recepit is printer.
+	 *
 	 */
 	private class SubmitCartHandler implements EventHandler<ActionEvent> {
 		public void handle(ActionEvent e) {
-			cart.setDeliveryDate(cp.getDate(date));
-			cu.addRewardPoints(rprocessor.rewardPoints(cart));
-			//System.out.println(cart.toString());
-			
-			PrintWriter writer;
-			try {
-				writer = new PrintWriter("src/receipt.txt", "UTF-8");
-				writer.println(cart.toString().replace("], ", "\n").replace("[", "\n").replace("]", ""));
-				writer.close();
-				File openThis= new File("src/receipt.txt");
+			cp.getDate(date);
+			if (LocalDate.of(date.getYear(), date.getMonth(), date.getDay()).compareTo(LocalDate.now())>=0){
+				cart.setDeliveryDate(date);
+				cu.addRewardPoints(rprocessor.rewardPoints(cart));
+				//System.out.println(cart.toString());)
+				
+				PrintWriter writer;
 				try {
-					java.awt.Desktop.getDesktop().edit(openThis);
-				} catch (IOException e1) {
+					writer = new PrintWriter("src/receipt.txt", "UTF-8");
+					writer.println(cart.toString().replace("], ", "\n").replace("[", "\n").replace("]", ""));
+					writer.close();
+					File openThis= new File("src/receipt.txt");
+					try {
+						java.awt.Desktop.getDesktop().edit(openThis);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (UnsupportedEncodingException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (UnsupportedEncodingException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+					PopUp.display("Cart submited. Receipt created at src/receipt.txt\nPoints have been added to customer and are displayed on receipt.");
+				}
+			else{
+					PopUp.display("Delivery date can not be set to before the current date");
+				}
 			}
-			PopUp.display("Cart submited. Receipt created at src/receipt.txt\nPoints have been added to customer and are displayed on receipt.");
-			}
-		
 		}
 	/**
 	 * This method updates the size of the cart on the market pane.

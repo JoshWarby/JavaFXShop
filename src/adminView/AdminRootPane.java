@@ -5,6 +5,11 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import adminView.*;
 
+/**
+ * This is the root pane for the admin, it displays all other panes.
+ * @author Josh
+ *
+ */
 public class AdminRootPane extends TabPane{
 
 	private ProductsPane pp;

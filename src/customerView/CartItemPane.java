@@ -21,7 +21,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
-
+/**
+ * This pane displays individual items within the cart pane, along with buttons to add or remove more of that product.
+ * @author Josh
+ *
+ */
 public class CartItemPane extends HBox implements Observer {
 
 	//accessible throughout the class
