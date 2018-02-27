@@ -10,6 +10,11 @@ import model.DiscountProduct;
 import model.Product;
 import model.RewardProcessor;
 
+/**
+ * This class creates, or resets the o.tmp file within the src folder.
+ * @author Josh
+ *
+ */
 public class ApplicationSetup {
 
 	public static void main(String[] args) {

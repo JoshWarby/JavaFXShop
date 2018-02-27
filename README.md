@@ -1,5 +1,5 @@
 # JavaFXShop
-Coursework - BT -DMU
+Coursework - BT - DMU
 
 Group 8:
 JW,SD,MD
