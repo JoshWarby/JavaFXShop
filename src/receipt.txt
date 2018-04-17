@@ -3,11 +3,15 @@ contents=
 Order:
 item=Product:
 productCode=E1, description=Example Product, unitPrice =100
-quantity=11
+quantity=28
+Order:
+item=Product:
+productCode=E2, description=Example Discounted, unitPrice =80
+quantity=20
 shopper=Customer:
 customerName=Name:
-firstName=sd, familyName=sd
-customerId=SDS0, rewardPoints=44
+firstName=fghfg, familyName=fgfg
+customerId=FGFGF0, rewardPoints=56
 deliveryDate=Date:
-day=15, month=3, year=2018
+day=23, month=5, year=2018
 cartId=CART1
